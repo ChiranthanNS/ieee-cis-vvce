@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Research — IEEE CIS</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+</head>
+
+<body class="bg-slate-950 text-white">
+
+<div id="pageRoot" class="opacity-0 transition-opacity duration-700">
+
+<!-- gradient -->
+<div class="fixed inset-0 -z-10">
+  <div class="absolute w-[700px] h-[700px]
+              bg-indigo-600/20 blur-[140px]"></div>
+</div>
+
+<!-- NAV — paste your pro navbar here -->
+
+<section class="max-w-5xl mx-auto px-6 mt-20">
+
+  <h2 class="text-4xl font-bold text-cyan-300"
+      data-aos="fade-down">
+    Research & Paper Summaries
+  </h2>
+
+  <p class="text-slate-400 mt-4">
+    AI, ML and Computational Intelligence paper insights
+    shared by IEEE CIS members
+  </p>
+
+  <div id="papersList"
+       class="space-y-8 mt-12">
+  </div>
+
+</section>
+
+</div>
+
+<style>
+.glassCard{
+  backdrop-filter: blur(16px);
+  background: rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.18);
+  padding:28px;
+  border-radius:20px;
+}
+
+.miniBtn{
+ padding:8px 14px;
+ border-radius:12px;
+ background:linear-gradient(90deg,#22d3ee,#2563eb);
+ box-shadow:0 0 18px rgba(56,189,248,.5);
+ transition:.25s;
+}
+.miniBtn:hover{transform:scale(1.08);}
+</style>
+
+<script src="app.js" defer></script>
+
+<script>
+AOS.init({duration:900, once:true});
+window.addEventListener("load",()=>pageRoot.classList.remove("opacity-0"));
+</script>
+
+</body>
+</html>

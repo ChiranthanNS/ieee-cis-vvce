@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Register — IEEE CIS</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+</head>
+
+<body class="bg-slate-950 text-white">
+
+<div id="pageRoot" class="opacity-0 transition-opacity duration-700">
+
+<!-- gradient bg -->
+<div class="fixed inset-0 -z-10">
+  <div class="absolute w-[700px] h-[700px] bg-cyan-600/20 blur-[140px]"></div>
+  <div class="absolute w-[700px] h-[700px] bg-indigo-600/20 blur-[140px] right-[-200px]"></div>
+</div>
+
+<!-- NAV -->
+<nav class="sticky top-4 mx-6 backdrop-blur-xl
+            bg-white/10 border border-white/20
+            rounded-2xl shadow-xl z-50">
+
+  <div class="px-6 py-3 flex justify-between items-center">
+
+    <h1 class="font-bold tracking-wide">
+      IEEE CIS VVCE
+    </h1>
+
+    <div class="hidden md:flex gap-6 text-sm">
+
+      <a href="index.html" class="navLink">Home</a>
+      <a href="events.html" class="navLink">Events</a>
+      <a href="projects.html" class="navLink">Projects</a>
+      <a href="research.html" class="navLink">Research</a>
+      <a href="resources.html" class="navLink">Resources</a>
+      <a href="gallery.html" class="navLink">Gallery</a>
+      <a href="committee.html" class="navLink">Committee</a>
+      <a href="contact.html" class="navLink">Contact</a>
+
+    </div>
+
+  </div>
+</nav>
+
+<style>
+.navLink{
+  position:relative;
+  transition:.25s;
+}
+.navLink:hover{
+  color:#67e8f9;
+}
+.navLink::after{
+  content:"";
+  position:absolute;
+  left:0; bottom:-6px;
+  width:0; height:2px;
+  background:#22d3ee;
+  transition:.25s;
+}
+.navLink:hover::after{
+  width:100%;
+}
+</style>
+
+
+<!-- FORM -->
+<section class="max-w-xl mx-auto px-6 mt-20">
+
+  <div class="backdrop-blur-xl bg-white/10
+              border border-white/20
+              rounded-2xl p-8 shadow-xl"
+       data-aos="zoom-in">
+
+    <h2 class="text-2xl font-bold mb-6">
+      Event Registration
+    </h2>
+
+    <form id="regForm" class="space-y-4">
+
+      <input id="name" placeholder="Full Name"
+        class="proInput" required>
+
+      <input id="usn" placeholder="USN / Roll"
+        class="proInput" required>
+
+      <input id="branch" placeholder="Branch"
+        class="proInput" required>
+
+      <input id="year" placeholder="Year"
+        class="proInput" required>
+
+      <input id="email" type="email"
+        placeholder="Email" class="proInput" required>
+
+      <input id="phone" placeholder="Phone"
+        class="proInput" required>
+
+        <div id="teamMembers"></div>
+<div id="payBox"></div>
+
+      <button class="proBtn w-full">
+        Submit Registration
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+<div id="toast"
+ class="fixed bottom-6 right-6 hidden
+        text-white px-5 py-3 rounded-lg shadow-lg">
+</div>
+
+</div>
+
+<style>
+.proInput{
+  width:100%;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.25);
+  padding:14px;
+  border-radius:14px;
+}
+
+.proBtn{
+  padding:14px;
+  border-radius:16px;
+  font-weight:600;
+  background:linear-gradient(90deg,#22d3ee,#2563eb);
+  box-shadow:0 0 30px rgba(56,189,248,.5);
+  transition:.25s;
+}
+.proBtn:hover{ transform:scale(1.05); }
+
+.regInput {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.35);
+  color: white;
+}
+
+.regInput::placeholder {
+  color: #cbd5f5;
+}
+
+</style>
+
+<script src="app.js" defer></script>
+
+<script>
+AOS.init({duration:900, once:true});
+window.addEventListener("load",()=>pageRoot.classList.remove("opacity-0"));
+</script>
+<!-- SOCIAL FLOAT -->
+<div class="fixed bottom-6 left-6 flex flex-col gap-3 z-50">
+
+  <a href="https://www.linkedin.com/in/ieee-cis-vvce-b103363b0"
+     target="_blank"
+     class="socialBtn">in</a>
+
+  <a href="https://www.instagram.com/ieee.cis.vvce"
+     target="_blank"
+     class="socialBtn">ig</a>
+
+</div>
+
+<style>
+.socialBtn{
+  width:44px;height:44px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:14px;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.25);
+  font-weight:bold;
+  transition:.25s;
+}
+.socialBtn:hover{
+  transform:scale(1.15);
+  box-shadow:0 0 20px rgba(56,189,248,.7);
+}
+</style>
+<footer class="mt-24 border-t border-white/10
+               bg-white/5 backdrop-blur-xl">
+
+<div class="max-w-6xl mx-auto px-6 py-10
+            grid md:grid-cols-3 gap-8 text-sm">
+
+<div>
+<h4 class="font-semibold text-cyan-300">IEEE CIS Student Chapter</h4>
+<p class="mt-3 text-slate-400">
+Promoting AI, ML and Computational Intelligence through
+student innovation and research.
+</p>
+</div>
+
+<div>
+<h4 class="font-semibold text-cyan-300">Affiliation</h4>
+<p class="mt-3 text-slate-400">
+Vidyavardhaka College of Engineering<br>
+IEEE Student Branch<br>
+IEEE CIS Society
+</p>
+</div>
+
+<div>
+<h4 class="font-semibold text-cyan-300">Contact</h4>
+<p class="mt-3 text-slate-400">
+ieee-cis@vvce.ac.in<br>
+Mysuru, Karnataka, India
+</p>
+</div>
+
+</div>
+
+<div class="text-center text-xs text-slate-500 pb-6">
+© 2026 IEEE CIS VVCE Student Chapter
+</div>
+
+</footer>
+<script>
+document.addEventListener("DOMContentLoaded", async ()=>{
+
+  const supabase = window.supabase.createClient(
+    "https://msyblaohdkpztytpbszp.supabase.co",
+    "sb_publishable_ZtFIWz7_rwHov2Me1cWsHQ_qTw9rH56"
+  )
+
+  const id = new URLSearchParams(location.search).get("event")
+  if(!id) return
+
+  const { data } = await supabase
+    .from("events")
+    .select("*")
+    .eq("id", id)
+    .single()
+
+  if(!data) return
+
+  // ===== TEAM MODE =====
+  if(data.event_mode === "team" && data.team_size){
+    // hide top individual section label text
+document.querySelector('input#name').placeholder = "Leader Name"
+document.querySelector('input#usn').placeholder  = "Leader USN"
+
+
+    const container = document.getElementById("teamMembers")
+    container.innerHTML = ""
+
+    // ===== TEAM HEAD =====
+container.innerHTML += `
+`
+
+// ===== OTHER MEMBERS =====
+for(let i=2;i<=data.team_size;i++){
+  container.innerHTML += `
+    <div class="glassCard">
+      <h3 class="text-slate-300 mb-3">Member ${i}</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+        <input class="regInput memberName" placeholder="Name" required>
+        <input class="regInput memberUsn" placeholder="USN" required>
+      </div>
+    </div>`
+}
+
+
+  }
+
+ // ===== PAID EVENT =====
+// ===== PAID EVENT =====
+if(data.payment_qr_url){
+
+
+  document.getElementById("payBox").innerHTML = `
+    <div class="glassCard text-center space-y-4">
+
+      <h3 class="text-cyan-300 font-semibold">
+        Payment Required
+      </h3>
+
+      <img src="${data.payment_qr_url}"
+     onclick="openImgModal('${data.payment_qr_url}')"
+     class="w-64 mx-auto rounded-xl shadow-lg cursor-zoom-in hover:opacity-90 transition">
+
+
+      <input id="utr"
+             class="regInput"
+             placeholder="Enter UTR / Transaction ID"
+             required>
+
+
+
+    </div>
+  `
+}
+
+
+})
+</script>
+
+<!-- IMAGE ZOOM MODAL -->
+<div id="imgModal"
+     class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+
+  <img id="imgModalSrc"
+       class="max-w-[90%] max-h-[90%] rounded-2xl shadow-2xl">
+
+</div>
+
+<script>
+function openImgModal(src){
+  const m = document.getElementById("imgModal")
+  const i = document.getElementById("imgModalSrc")
+  i.src = src
+  m.classList.remove("hidden")
+  m.classList.add("flex")
+}
+
+document.getElementById("imgModal")
+?.addEventListener("click", ()=>{
+  imgModal.classList.add("hidden")
+  imgModal.classList.remove("flex")
+})
+</script>
+
+</body>
+</html>
