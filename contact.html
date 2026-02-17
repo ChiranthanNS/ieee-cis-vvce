@@ -39,31 +39,53 @@
         Send a Message
       </h2>
 
-      <form id="contactForm">
+      <form id="contactForm" class="space-y-5">
 
-  <input id="name" placeholder="Full Name" class="contactInput" required>
+  <!-- Name -->
+  <input id="name"
+         placeholder="Full Name"
+         class="proInput"
+         required>
 
-  <input id="cemail" type="email" placeholder="Email" required>
+  <!-- Email -->
+  <input id="cemail"
+         type="email"
+         placeholder="Email"
+         class="proInput"
+         required>
 
-  <select id="caffiliation">
-    <option value="student">Student</option>
-    <option value="faculty">Faculty</option>
-    <option value="other">Other</option>
+  <!-- Affiliation -->
+  <select id="caffiliation" class="proInput">
+    <option value="">Affiliation</option>
+    <option value="Student">Student</option>
+    <option value="Faculty">Faculty</option>
+    <option value="Other">Other</option>
   </select>
 
-  <select id="ctype">
-    <option value="general">General</option>
-    <option value="event">Event</option>
-    <option value="collab">Collaboration</option>
+  <!-- Inquiry Type -->
+  <select id="ctype" class="proInput">
+    <option value="">Inquiry Type</option>
+    <option value="General">General</option>
+    <option value="Event">Event</option>
+    <option value="Collaboration">Collaboration</option>
   </select>
 
-  <textarea id="cmessage" placeholder="Message" required></textarea>
+  <!-- Message -->
+  <textarea id="cmessage"
+            rows="5"
+            placeholder="Your message..."
+            class="proInput"
+            required></textarea>
 
-  <button type="submit">Send Message</button>
+  <!-- Button -->
+  <button type="submit" class="proBtn w-full">
+    Send Message
+  </button>
+
+  <!-- Status -->
+  <div id="contactStatus" class="text-sm mt-2"></div>
 
 </form>
-
-<div id="contactStatus"></div>
 
 
     </div>
