@@ -256,24 +256,34 @@ if (regForm) {
 
 
     // ===== INSERT =====
-    const payload = {
-      event_id: Number(eventId),
+    // build team json
+const members = []
 
-      leader_name: document.getElementById("name").value,
-      leader_usn: document.getElementById("usn").value,
-      leader_branch: document.getElementById("branch").value,
-      leader_year: document.getElementById("year").value,
-      leader_email: document.getElementById("email").value,
-      leader_phone: document.getElementById("phone").value,
+document.querySelectorAll(".memberName").forEach((el, i) => {
+  members.push({
+    name: el.value,
+    usn: document.querySelectorAll(".memberUsn")[i].value
+  })
+})
 
-      team_member_names: memberNames,
-      team_member_usns: memberUsns,
+const payload = {
+  event_id: Number(eventId),
 
-      is_paid_event: !!document.getElementById("utr"),
-      amount: null,
-      utr_number: document.getElementById("utr")?.value || null,
-      payment_status: "pending"
-    };
+  leader_name: document.getElementById("name").value,
+  leader_usn: document.getElementById("usn").value,
+  leader_branch: document.getElementById("branch").value,
+  leader_year: document.getElementById("year").value,
+  leader_email: document.getElementById("email").value,
+  leader_phone: document.getElementById("phone").value,
+
+  team_member: members,   // ✅ matches your jsonb column
+
+  is_paid_event: !!document.getElementById("utr"),
+  amount: null,
+  utr_number: document.getElementById("utr")?.value || null,
+  payment_status: "pending"
+};
+
 
     const { error } = await db
       .from("registrations")
