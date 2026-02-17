@@ -276,13 +276,17 @@ const payload = {
   leader_email: document.getElementById("email").value,
   leader_phone: document.getElementById("phone").value,
 
-  team_member: members,   // ✅ matches your jsonb column
+  team_member: memberNames.map((n,i)=>({
+    name: n,
+    usn: memberUsns[i] || null
+  })),
 
   is_paid_event: !!document.getElementById("utr"),
   amount: null,
   utr_number: document.getElementById("utr")?.value || null,
-  payment_status: "pending"
+  payment_stati: "pending"   // ← matches your column spelling
 };
+
 
 
     const { error } = await db
@@ -698,7 +702,8 @@ async function loadAdminStats(){
  const pa = await db.from("papers")
    .select("*",{count:"exact", head:true});
 
- if(statEvents) statEvents.textContent = e.count ?? 0;
+ const statEvents = document.getElementById("statEvents");
+const statRegs = document.getElementById("statRegs");
  if(statRegs) statRegs.textContent = r.count ?? 0;
  if(window.statProjects) statProjects.textContent = p.count ?? 0;
  if(window.statPapers) statPapers.textContent = pa.count ?? 0;
