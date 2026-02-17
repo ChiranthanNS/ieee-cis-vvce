@@ -276,9 +276,9 @@ const payload = {
   leader_email: document.getElementById("email").value,
   leader_phone: document.getElementById("phone").value,
 
-  team_member: memberNames.map((n,i)=>({
+  team_member_names: memberNames.map((n,i)=>({
     name: n,
-    usn: memberUsns[i] || null
+    team_member_usns: memberUsns[i] || null
   })),
 
   is_paid_event: !!document.getElementById("utr"),
