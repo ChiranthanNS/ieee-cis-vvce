@@ -276,16 +276,15 @@ const payload = {
   leader_email: document.getElementById("email").value,
   leader_phone: document.getElementById("phone").value,
 
-  team_member_names: memberNames.map((n,i)=>({
-    name: n,
-    team_member_usns: memberUsns[i] || null
-  })),
+  team_member_names: memberNames,   // ✅ array
+  team_member_usns: memberUsns,     // ✅ array
 
   is_paid_event: !!document.getElementById("utr"),
   amount: null,
   utr_number: document.getElementById("utr")?.value || null,
-  payment_status: "pending"   // ← matches your column spelling
+  payment_status: "pending"
 };
+
 
 
 
@@ -296,11 +295,18 @@ const { data, error } = await db
 
 console.log("INSERT RESULT:", data, error)
 
+btn.disabled = false;
+btn.textContent = "Submit Registration";
+
 if (error) {
-  alert("Registration failed")
-  console.error("REAL INSERT ERROR:", error)
-  return
+  alert("Registration failed");
+  console.error("REAL INSERT ERROR:", error);
+  return;
 }
+
+alert("Registration successful");
+regForm.reset();
+
 
 
   });
