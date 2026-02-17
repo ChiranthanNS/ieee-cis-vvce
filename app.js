@@ -777,9 +777,12 @@ const contactForm = document.getElementById("contactForm");
 
 if (contactForm) {
   contactForm.addEventListener("submit", async (e) => {
+
+    console.log("CONTACT HANDLER RUNNING");   // ✅ ADD HERE
     e.preventDefault();
 
     const status = document.getElementById("contactStatus");
+
 
     const name = document.getElementById("name").value.trim();
     const email = document.getElementById("cemail").value.trim();
