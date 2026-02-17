@@ -787,17 +787,18 @@ if (contactForm) {
 
     status.textContent = "Sending..."
     
-    const { error } = await db
-      .from("contact_messages")
-      console.log("CONTACT NAME =", name)
+    console.log("CONTACT NAME =", name)
 
-      .insert({
-        name: name,
-        email: email,
-        affiliation: affiliation,
-        inquiry_type: type,
-        message: message
-      })
+const { error } = await db
+  .from("contact_messages")
+  .insert({
+    name,
+    email,
+    affiliation,
+    inquiry_type: type,
+    message
+  })
+
 
     if (error) {
       status.textContent = "❌ Failed to send message"

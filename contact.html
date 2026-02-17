@@ -186,44 +186,6 @@
 }
 </style>
 
-<!-- WORKING CONTACT LOGIC -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-
-  const supabase = window.supabase.createClient(
-    "https://msyblaohdkpztytpbszp.supabase.co",
-    "sb_publishable_ZtFIWz7_rwHov2Me1cWsHQ_qTw9rH56"
-  )
-
-  const form = document.getElementById("contactForm")
-  const status = document.getElementById("status")
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault()
-
-    status.textContent = "Sending..."
-
-    const { error } = await supabase
-      .from("contact_messages")
-      .insert({
-        name: name.value,
-        email: email.value,
-        affiliation: affiliation.value,
-        inquiry_type: type.value,
-        message: message.value
-      })
-
-    if (error) {
-      status.textContent = "❌ Failed"
-      return
-    }
-
-    status.textContent = "✅ Sent"
-    form.reset()
-  })
-
-})
-</script>
 
 </body>
 </html>
