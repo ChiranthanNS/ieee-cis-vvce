@@ -289,18 +289,19 @@ const payload = {
 
 
 
-    const { data, error } = await db
+const { data, error } = await db
   .from("registrations")
   .insert([payload])
   .select()
 
-console.log("REG RESULT:", data, error)
+console.log("INSERT RESULT:", data, error)
 
 if (error) {
   alert("Registration failed")
-  console.error("FULL ERROR:", error)
+  console.error("REAL INSERT ERROR:", error)
   return
 }
+
 
   });
 }
@@ -759,7 +760,7 @@ async function uploadQR(eventId) {
 }
 
 
-loadAdminStats();
+// loadAdminStats();
 
 
 // ===== CONTACT FORM SUBMIT =====
@@ -772,7 +773,6 @@ if (contactForm) {
     e.preventDefault()
 
     const status = document.getElementById("contactStatus")
-
     const name = document.getElementById("name").value.trim()
     const email = document.getElementById("cemail").value.trim()
     const affiliation = document.getElementById("caffiliation").value
