@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Contact — IEEE CIS VVCE</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+</head>
+
+<body class="bg-slate-950 text-white min-h-screen">
+
+<!-- glow background -->
+<div class="fixed inset-0 -z-10">
+  <div class="absolute w-[700px] h-[700px] bg-cyan-600/20 blur-[140px] top-[-200px]"></div>
+  <div class="absolute w-[700px] h-[700px] bg-indigo-600/20 blur-[140px] right-[-200px]"></div>
+</div>
+
+<!-- HEADER -->
+<header class="p-6 border-b border-white/10">
+  <h1 class="text-2xl font-bold text-cyan-400">
+    Contact IEEE CIS Student Chapter VVCE
+  </h1>
+  <p class="text-slate-400 text-sm">
+    Official communication & collaboration channel
+  </p>
+</header>
+
+<!-- CONTACT SECTION -->
+<section class="max-w-7xl mx-auto px-6 py-16">
+
+  <div class="grid lg:grid-cols-2 gap-12">
+
+    <!-- LEFT — FORM -->
+    <div class="glassCard">
+
+      <h2 class="text-xl font-semibold mb-6 text-cyan-300">
+        Send a Message
+      </h2>
+
+      <form id="contactForm" class="space-y-5">
+
+        <input id="name" placeholder="Full Name"
+          class="contactInput" required>
+
+        <input id="email" type="email"
+          placeholder="Email"
+          class="contactInput" required>
+
+        <select id="affiliation"
+          class="contactInput text-black">
+          <option>Student</option>
+          <option>Faculty</option>
+          <option>Industry</option>
+          <option>Other</option>
+        </select>
+
+        <select id="type"
+          class="contactInput text-black">
+          <option>General</option>
+          <option>Event</option>
+          <option>Membership</option>
+          <option>Collaboration</option>
+          <option>Sponsorship</option>
+        </select>
+
+        <textarea id="message"
+          rows="4"
+          placeholder="Your message..."
+          class="contactInput"
+          required></textarea>
+
+        <button class="contactBtn">
+          Send Message
+        </button>
+
+      </form>
+
+      <p id="status" class="mt-4 text-cyan-400"></p>
+
+    </div>
+
+    <!-- RIGHT — DETAILS + MAP -->
+    <div class="space-y-8">
+
+      <!-- Official Contact -->
+      <div class="glassCard">
+        <h3 class="text-lg font-semibold text-cyan-300 mb-4">
+          Official Contact
+        </h3>
+
+        <div class="text-slate-300 text-sm space-y-2 leading-relaxed">
+
+          <p>
+            IEEE CIS Student Chapter — VVCE
+          </p>
+
+          <p>
+            Department of Artificial Intelligence & ML<br>
+            Vidya Vardhaka College of Engineering<br>
+            Mysuru, Karnataka — India
+          </p>
+
+          <p>
+            📧 ieee.cis@vvce.ac.in
+          </p>
+
+          <p class="text-slate-500">
+            Response time: 24–48 working hours
+          </p>
+
+        </div>
+      </div>
+
+      <!-- Social -->
+      <div class="glassCard">
+        <h3 class="text-lg font-semibold text-cyan-300 mb-4">
+          Connect With Us
+        </h3>
+
+        <div class="flex gap-4">
+
+          <a href="https://www.linkedin.com/in/ieee-cis-vvce-b103363b0"
+             target="_blank"
+             class="socialBtn">LinkedIn</a>
+
+          <a href="https://www.instagram.com/ieee.cis.vvce"
+             target="_blank"
+             class="socialBtn">Instagram</a>
+
+        </div>
+      </div>
+
+      <!-- VVCE MAP -->
+      <div class="glassCard p-0 overflow-hidden">
+        <iframe
+          src="https://maps.google.com/maps?q=VVCE%20Mysore&t=&z=13&ie=UTF8&iwloc=&output=embed"
+          class="w-full h-64 border-0">
+        </iframe>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- STYLES -->
+<style>
+.glassCard{
+  backdrop-filter: blur(18px);
+  background: rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.18);
+  padding:28px;
+  border-radius:20px;
+  box-shadow:0 0 40px rgba(0,0,0,0.4);
+}
+
+.contactInput{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.3);
+}
+
+.contactInput:focus{
+  border-color:#22d3ee;
+  box-shadow:0 0 15px rgba(34,211,238,.5);
+}
+
+.contactBtn{
+  width:100%;
+  padding:14px;
+  border-radius:14px;
+  font-weight:600;
+  background:linear-gradient(90deg,#22d3ee,#2563eb);
+}
+
+.socialBtn{
+  padding:10px 16px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.25);
+}
+</style>
+
+<!-- WORKING CONTACT LOGIC -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const supabase = window.supabase.createClient(
+    "https://msyblaohdkpztytpbszp.supabase.co",
+    "sb_publishable_ZtFIWz7_rwHov2Me1cWsHQ_qTw9rH56"
+  )
+
+  const form = document.getElementById("contactForm")
+  const status = document.getElementById("status")
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault()
+
+    status.textContent = "Sending..."
+
+    const { error } = await supabase
+      .from("contact_messages")
+      .insert({
+        name: name.value,
+        email: email.value,
+        affiliation: affiliation.value,
+        inquiry_type: type.value,
+        message: message.value
+      })
+
+    if (error) {
+      status.textContent = "❌ Failed"
+      return
+    }
+
+    status.textContent = "✅ Sent"
+    form.reset()
+  })
+
+})
+</script>
+
+</body>
+</html>
