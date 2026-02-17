@@ -284,7 +284,7 @@ const payload = {
   is_paid_event: !!document.getElementById("utr"),
   amount: null,
   utr_number: document.getElementById("utr")?.value || null,
-  payment_stati: "pending"   // ← matches your column spelling
+  payment_status: "pending"   // ← matches your column spelling
 };
 
 
