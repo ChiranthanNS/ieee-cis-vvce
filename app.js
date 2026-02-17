@@ -289,20 +289,19 @@ const payload = {
 
 
 
-    const { error } = await db
-      .from("registrations")
-      .insert([payload]);
+    const { data, error } = await db
+  .from("registrations")
+  .insert([payload])
+  .select()
 
-    btn.disabled = false;
-    btn.textContent = "Submit Registration";
+console.log("REG RESULT:", data, error)
 
-    if (error) {
-      console.error(error);
-      alert("Registration failed");
-    } else {
-      alert("Registration successful");
-      regForm.reset();
-    }
+if (error) {
+  alert("Registration failed")
+  console.error("FULL ERROR:", error)
+  return
+}
+
   });
 }
 
