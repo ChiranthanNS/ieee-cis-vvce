@@ -759,7 +759,7 @@ if (contactForm) {
 
     const status = document.getElementById("contactStatus")
 
-    const name = document.getElementById("cname").value.trim()
+    const name = document.getElementById("name").value.trim()
     const email = document.getElementById("cemail").value.trim()
     const affiliation = document.getElementById("caffiliation").value
     const type = document.getElementById("ctype").value
