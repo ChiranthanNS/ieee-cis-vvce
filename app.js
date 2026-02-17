@@ -783,6 +783,8 @@ if (contactForm) {
     
     const { error } = await db
       .from("contact_messages")
+      console.log("CONTACT NAME =", name)
+
       .insert({
         name: name,
         email: email,
