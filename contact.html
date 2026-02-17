@@ -2,7 +2,6 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>Contact — IEEE CIS VVCE</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -41,53 +40,45 @@
 
       <form id="contactForm" class="space-y-5">
 
-  <!-- Name -->
-  <input id="name"
-         placeholder="Full Name"
-         class="proInput"
-         required>
+        <input id="name"
+               placeholder="Full Name"
+               class="proInput"
+               required>
 
-  <!-- Email -->
-  <input id="cemail"
-         type="email"
-         placeholder="Email"
-         class="proInput"
-         required>
+        <input id="cemail"
+               type="email"
+               placeholder="Email"
+               class="proInput"
+               required>
 
-  <!-- Affiliation -->
-  <select id="caffiliation" class="proInput">
-    <option value="">Affiliation</option>
-    <option value="Student">Student</option>
-    <option value="Faculty">Faculty</option>
-    <option value="Other">Other</option>
-  </select>
+        <select id="caffiliation" class="proInput">
+          <option value="">Affiliation</option>
+          <option>Student</option>
+          <option>Faculty</option>
+          <option>Other</option>
+        </select>
 
-  <!-- Inquiry Type -->
-  <select id="ctype" class="proInput">
-    <option value="">Inquiry Type</option>
-    <option value="General">General</option>
-    <option value="Event">Event</option>
-    <option value="Collaboration">Collaboration</option>
-  </select>
+        <select id="ctype" class="proInput">
+          <option value="">Inquiry Type</option>
+          <option>General</option>
+          <option>Event</option>
+          <option>Collaboration</option>
+        </select>
 
-  <!-- Message -->
-  <textarea id="cmessage"
-            rows="5"
-            placeholder="Your message..."
-            class="proInput"
-            required></textarea>
+        <textarea id="cmessage"
+                  rows="5"
+                  placeholder="Your message..."
+                  class="proInput"
+                  required></textarea>
 
-  <!-- Button -->
-  <button type="submit" class="proBtn w-full">
-    Send Message
-  </button>
+        <button type="submit" class="proBtn">
+          Send Message
+        </button>
 
-  <!-- Status -->
-  <div id="contactStatus" class="text-sm mt-2"></div>
+        <div id="contactStatus"
+             class="text-sm text-slate-300"></div>
 
-</form>
-
-
+      </form>
     </div>
 
     <!-- RIGHT — DETAILS + MAP -->
@@ -100,25 +91,16 @@
         </h3>
 
         <div class="text-slate-300 text-sm space-y-2 leading-relaxed">
-
-          <p>
-            IEEE CIS Student Chapter — VVCE
-          </p>
-
+          <p>IEEE CIS Student Chapter — VVCE</p>
           <p>
             Department of Artificial Intelligence & ML<br>
             Vidya Vardhaka College of Engineering<br>
             Mysuru, Karnataka — India
           </p>
-
-          <p>
-            📧 ieee.cis@vvce.ac.in
-          </p>
-
+          <p>📧 ieee.cis@vvce.ac.in</p>
           <p class="text-slate-500">
             Response time: 24–48 working hours
           </p>
-
         </div>
       </div>
 
@@ -129,7 +111,6 @@
         </h3>
 
         <div class="flex gap-4">
-
           <a href="https://www.linkedin.com/in/ieee-cis-vvce-b103363b0"
              target="_blank"
              class="socialBtn">LinkedIn</a>
@@ -137,25 +118,22 @@
           <a href="https://www.instagram.com/ieee.cis.vvce"
              target="_blank"
              class="socialBtn">Instagram</a>
-
         </div>
       </div>
 
-      <!-- VVCE MAP -->
+      <!-- MAP -->
       <div class="glassCard p-0 overflow-hidden">
         <iframe
           src="https://maps.google.com/maps?q=VVCE%20Mysore&t=&z=13&ie=UTF8&iwloc=&output=embed"
-          class="w-full h-64 border-0">
-        </iframe>
+          class="w-full h-64 border-0"></iframe>
       </div>
 
     </div>
 
   </div>
-
 </section>
 
-<!-- STYLES -->
+<!-- UI STYLES -->
 <style>
 .glassCard{
   backdrop-filter: blur(18px);
@@ -166,27 +144,42 @@
   box-shadow:0 0 40px rgba(0,0,0,0.4);
 }
 
-.contactInput{
+/* ✅ FIXED INPUT STYLE */
+.proInput{
   width:100%;
-  padding:12px;
-  border-radius:12px;
-  background:rgba(255,255,255,0.1);
-  border:1px solid rgba(255,255,255,0.3);
-}
-
-.contactInput:focus{
-  border-color:#22d3ee;
-  box-shadow:0 0 15px rgba(34,211,238,.5);
-}
-
-.contactBtn{
-  width:100%;
+  background:rgba(15,23,42,0.6);
+  border:1px solid rgba(255,255,255,0.35);
   padding:14px;
   border-radius:14px;
-  font-weight:600;
-  background:linear-gradient(90deg,#22d3ee,#2563eb);
+  color:white;
+  outline:none;
 }
 
+.proInput::placeholder{
+  color:#cbd5f5;
+}
+
+.proInput:focus{
+  border-color:#22d3ee;
+  box-shadow:0 0 14px rgba(34,211,238,.5);
+}
+
+/* ✅ BUTTON */
+.proBtn{
+  width:100%;
+  padding:14px;
+  border-radius:16px;
+  font-weight:600;
+  background:linear-gradient(90deg,#22d3ee,#2563eb);
+  box-shadow:0 0 30px rgba(56,189,248,.4);
+  transition:.25s;
+}
+
+.proBtn:hover{
+  transform:scale(1.05);
+}
+
+/* ✅ SOCIAL */
 .socialBtn{
   padding:10px 16px;
   border-radius:12px;
