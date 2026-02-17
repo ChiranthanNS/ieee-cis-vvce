@@ -771,47 +771,47 @@ async function uploadQR(eventId) {
 
 // ===== CONTACT FORM SUBMIT =====
 
-const contactForm = document.getElementById("contactForm")
+// ===== CONTACT FORM SUBMIT =====
+
+const contactForm = document.getElementById("contactForm");
 
 if (contactForm) {
-
   contactForm.addEventListener("submit", async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const status = document.getElementById("contactStatus")
-    const name = document.getElementById("name").value.trim()
-    const email = document.getElementById("cemail").value.trim()
-    const affiliation = document.getElementById("caffiliation").value
-    const type = document.getElementById("ctype").value
-    const message = document.getElementById("cmessage").value.trim()
+    const status = document.getElementById("contactStatus");
 
-    status.textContent = "Sending..."
-    
-    console.log("CONTACT NAME =", name)
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("cemail").value.trim();
+    const affiliation = document.getElementById("caffiliation").value;
+    const type = document.getElementById("ctype").value;
+    const message = document.getElementById("cmessage").value.trim();
 
-const { error } = await db
-  .from("contact_messages")
-  .insert({
-    name,
-    email,
-    affiliation,
-    inquiry_type: type,
-    message
-  })
+    console.log("CONTACT NAME =", name);
 
+    status.textContent = "Sending...";
+
+    const { error } = await db
+      .from("contact_messages")
+      .insert([{
+        name,
+        email,
+        affiliation,
+        inquiry_type: type,
+        message
+      }]);
 
     if (error) {
-      status.textContent = "❌ Failed to send message"
-      console.error(error)
-      return
+      console.error("CONTACT ERROR:", error);
+      status.textContent = "❌ Failed";
+      return;
     }
 
-    status.textContent = "✅ Message sent successfully"
-    contactForm.reset()
-
-  })
-
+    status.textContent = "✅ Sent";
+    contactForm.reset();
+  });
 }
+
 }
 
 // ===== COMMITTEE MODAL =====
