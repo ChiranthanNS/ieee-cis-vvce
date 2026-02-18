@@ -176,7 +176,7 @@ async function loadEvents() {
 
         ${poster ? `
           <img src="${poster}"
-               class="rounded-xl mb-4 w-full h-48 object-cover">
+               class="rounded-xl mb-4 w-full h-auto object-contain">
         ` : ""}
 
         <h3 class="text-xl font-semibold text-cyan-300">
@@ -441,7 +441,7 @@ async function loadEventDetail(){
     ${data.poster_url ? `
   <img src="${data.poster_url}"
        onclick="openImgModal('${data.poster_url}')"
-       class="rounded-2xl mb-6 w-full h-64 object-cover cursor-zoom-in hover:opacity-90 transition">
+       class="rounded-2xl mb-6 w-full h-auto object-contain cursor-zoom-in hover:opacity-90 transition">
 ` : ""}
 
 
