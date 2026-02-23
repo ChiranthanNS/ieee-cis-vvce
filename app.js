@@ -161,7 +161,7 @@ if(stage === "completed"){
   actionUI = `
     <span class="px-3 py-1 rounded-full
           bg-green-500/20 text-green-400">
-      Registration Completed
+      Event Completed
     </span>`;
 }
 
@@ -478,7 +478,7 @@ async function loadEventDetail(){
 ` : `
   <div class="mt-8 px-6 py-3 rounded-xl
               bg-green-500/20 text-green-400 text-center font-semibold">
-    Registration Completed
+    Event Completed
   </div>
 `}
   `;
