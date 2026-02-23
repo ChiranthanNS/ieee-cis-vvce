@@ -142,28 +142,28 @@ async function loadEvents() {
     let actionUI = "";
 
     if(stage === "upcoming"){
-      actionUI = `
-        <a href="event.html?id=${e.id}"
-           class="miniBtn">
-           View & Register →
-        </a>`;
-    }
+  actionUI = `
+    <a href="event.html?id=${e.id}"
+       class="miniBtn">
+       View & Register →
+    </a>`;
+}
 
-    if(stage === "live"){
-      actionUI = `
-        <span class="px-3 py-1 rounded-full
-              bg-red-500/20 text-red-400">
-          LIVE NOW
-        </span>`;
-    }
+if(stage === "stop"){
+  actionUI = `
+    <span class="px-3 py-1 rounded-full
+          bg-yellow-500/20 text-yellow-400">
+      Registration Closed
+    </span>`;
+}
 
-    if(stage === "completed"){
-      actionUI = `
-        <span class="px-3 py-1 rounded-full
-              bg-green-500/20 text-green-400">
-          Completed
-        </span>`;
-    }
+if(stage === "completed"){
+  actionUI = `
+    <span class="px-3 py-1 rounded-full
+          bg-green-500/20 text-green-400">
+      Registration Completed
+    </span>`;
+}
 
     // =====================
     // CARD RENDER
@@ -470,10 +470,15 @@ async function loadEventDetail(){
      class="proBtn inline-block mt-8">
      Register Now →
   </a>
+` : data.lifecycle_stage === "stop" ? `
+  <div class="mt-8 px-6 py-3 rounded-xl
+              bg-yellow-500/20 text-yellow-400 text-center font-semibold">
+    Registration Closed
+  </div>
 ` : `
   <div class="mt-8 px-6 py-3 rounded-xl
-              bg-red-500/20 text-red-400 text-center font-semibold">
-    Registration Closed
+              bg-green-500/20 text-green-400 text-center font-semibold">
+    Registration Completed
   </div>
 `}
   `;
