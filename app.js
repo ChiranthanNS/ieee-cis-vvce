@@ -465,10 +465,17 @@ async function loadEventDetail(){
 
     </div>
 
-    <a href="register.html?event=${data.id}"
-       class="proBtn inline-block mt-8">
-       Register Now →
-    </a>
+    ${data.lifecycle_stage === "upcoming" ? `
+  <a href="register.html?event=${data.id}"
+     class="proBtn inline-block mt-8">
+     Register Now →
+  </a>
+` : `
+  <div class="mt-8 px-6 py-3 rounded-xl
+              bg-red-500/20 text-red-400 text-center font-semibold">
+    Registration Closed
+  </div>
+`}
   `;
 }
 
