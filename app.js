@@ -287,21 +287,64 @@ const payload = {
 
 
 
+// 🔹 GET EVENT INFO
+const { data: eventData } = await db
+  .from("events")
+  .select("max_registrations, lifecycle_stage")
+  .eq("id", Number(eventId))
+  .single();
 
+if (!eventData) {
+  alert("Event not found");
+  return;
+}
+
+// 🔹 CHECK IF REGISTRATION ALREADY CLOSED
+if (eventData.lifecycle_stage !== "upcoming") {
+  alert("Registration is closed");
+  return;
+}
+
+// 🔹 COUNT CURRENT REGISTRATIONS
+const { count } = await db
+  .from("registrations")
+  .select("*", { count: "exact", head: true })
+  .eq("event_id", Number(eventId));
+
+// 🔹 CHECK LIMIT
+if (
+  eventData.max_registrations &&
+  count >= eventData.max_registrations
+) {
+  // AUTO UPDATE lifecycle to stop
+  await db
+    .from("events")
+    .update({ lifecycle_stage: "stop" })
+    .eq("id", Number(eventId));
+
+  alert("Registration limit reached");
+  return;
+}
 const { data, error } = await db
   .from("registrations")
   .insert([payload])
-  .select()
-
-console.log("INSERT RESULT:", data, error)
-
-btn.disabled = false;
-btn.textContent = "Submit Registration";
+  .select();
 
 if (error) {
   alert("Registration failed");
-  console.error("REAL INSERT ERROR:", error);
+  console.error(error);
   return;
+}
+
+// 🔹 AFTER SUCCESSFUL INSERT → CHECK AGAIN
+if (
+  eventData.max_registrations &&
+  count + 1 >= eventData.max_registrations
+) {
+  await db
+    .from("events")
+    .update({ lifecycle_stage: "stop" })
+    .eq("id", Number(eventId));
 }
 
 alert("Registration successful");
