@@ -694,11 +694,11 @@ if(loginForm){
   });
 
   if(error){
-    msg.textContent = "Login failed";
-    msg.className = "text-red-500";
-  } else {
-    window.location = "admin.html";
-  }
+  alert("Login failed");
+  console.error(error);
+} else {
+  window.location = "admin.html";
+}
  });
 }
 
