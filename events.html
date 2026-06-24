@@ -1,44 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Events — IEEE CIS</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events — IEEE CIS VVCE</title>
+  <meta name="description" content="Upcoming and past events from IEEE CIS VVCE Student Chapter — workshops, AI talks, competitions and technical programs.">
+
+  <style>
+  .navLink{position:relative;transition:.25s;}
+  .navLink:hover{color:#67e8f9;}
+  .navLink::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:#22d3ee;transition:.25s;}
+  .navLink:hover::after{width:100%;}
+  .socialBtn{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:14px;background:rgba(255,255,255,0.12);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.25);font-weight:bold;transition:.25s;}
+  .socialBtn:hover{transform:scale(1.15);box-shadow:0 0 20px rgba(56,189,248,.7);}
+  .miniBtn{padding:8px 14px;border-radius:12px;background:linear-gradient(90deg,#22d3ee,#2563eb);box-shadow:0 0 18px rgba(56,189,248,.5);transition:.25s;display:inline-block;}
+  .miniBtn:hover{transform:scale(1.08);}
+  </style>
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <header class="p-6 border-b border-white/10">
-  <div class="flex items-center justify-between">
-
-    <!-- LEFT — Chapter Name -->
-    <div>
-      <h1 class="text-xl font-bold text-cyan-400">
-        IEEE CIS VVCE Student Chapter
-      </h1>
-      <p class="text-xs text-slate-400">
-        Vidya Vardhaka College of Engineering — Mysuru
-      </p>
-    </div>
-
-    <!-- RIGHT — Logos -->
-    <div class="flex items-center gap-3">
-
-      <!-- IEEE CIS -->
-      <img src="https://msyblaohdkpztytpbszp.supabase.co/storage/v1/object/public/gallery/IEEE%20CIS%20logo.jpg"
-           class="h-8 sm:h-10 md:h-12 w-auto object-contain">
-
-      <!-- VVCE -->
-      <img src="https://msyblaohdkpztytpbszp.supabase.co/storage/v1/object/public/gallery/vvce-logo.png"
-           class="h-8 sm:h-10 md:h-12 w-auto object-contain">
-
-    </div>
-
-  </div>
-</header>
 </head>
 
 <body class="bg-slate-950 text-white overflow-x-hidden">
+
+<!-- CHAPTER HEADER -->
+<header class="p-6 border-b border-white/10">
+  <div class="flex items-center justify-between">
+    <div>
+      <h1 class="text-xl font-bold text-cyan-400">IEEE CIS VVCE Student Chapter</h1>
+      <p class="text-xs text-slate-400">Vidya Vardhaka College of Engineering — Mysuru</p>
+    </div>
+    <div class="flex items-center gap-3">
+      <img src="https://msyblaohdkpztytpbszp.supabase.co/storage/v1/object/public/gallery/IEEE%20CIS%20logo.jpg"
+           class="h-8 sm:h-10 md:h-12 w-auto object-contain" alt="IEEE CIS Logo">
+      <img src="https://msyblaohdkpztytpbszp.supabase.co/storage/v1/object/public/gallery/vvce-logo.png"
+           class="h-8 sm:h-10 md:h-12 w-auto object-contain" alt="VVCE Logo">
+    </div>
+  </div>
+</header>
 
 <div id="pageRoot" class="opacity-0 transition-opacity duration-700">
 
@@ -49,18 +50,10 @@
 </div>
 
 <!-- NAV -->
-<nav class="sticky top-4 mx-6 backdrop-blur-xl
-            bg-white/10 border border-white/20
-            rounded-2xl shadow-xl z-50">
-
+<nav class="sticky top-4 mx-6 backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl shadow-xl z-50">
   <div class="px-6 py-3 flex justify-between items-center">
-
-    <h1 class="font-bold tracking-wide">
-      IEEE CIS VVCE
-    </h1>
-
+    <span class="font-bold tracking-wide">IEEE CIS VVCE</span>
     <div class="hidden md:flex gap-6 text-sm">
-
       <a href="index.html" class="navLink">Home</a>
       <a href="events.html" class="navLink">Events</a>
       <a href="projects.html" class="navLink">Projects</a>
@@ -69,135 +62,54 @@
       <a href="gallery.html" class="navLink">Gallery</a>
       <a href="committee.html" class="navLink">Committee</a>
       <a href="contact.html" class="navLink">Contact</a>
-
     </div>
-
   </div>
 </nav>
 
-<style>
-.navLink{
-  position:relative;
-  transition:.25s;
-}
-.navLink:hover{
-  color:#67e8f9;
-}
-.navLink::after{
-  content:"";
-  position:absolute;
-  left:0; bottom:-6px;
-  width:0; height:2px;
-  background:#22d3ee;
-  transition:.25s;
-}
-.navLink:hover::after{
-  width:100%;
-}
-</style>
-
-
 <!-- HEADER -->
-<section class="max-w-6xl mx-auto px-6 mt-16"
-         data-aos="fade-down">
-
-  <h2 class="text-4xl font-bold">
-    Chapter Events
-  </h2>
-
-  <p class="text-slate-400 mt-3">
-    Workshops • AI Talks • Competitions • Technical Programs
-  </p>
-
+<section class="max-w-6xl mx-auto px-6 mt-16" data-aos="fade-down">
+  <h2 class="text-4xl font-bold">Chapter Events</h2>
+  <p class="text-slate-400 mt-3">Workshops • AI Talks • Competitions • Technical Programs</p>
 </section>
 
 <!-- EVENTS GRID -->
 <div class="max-w-6xl mx-auto px-6 mt-12">
-  <div id="eventsList"
-       class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-  </div>
+  <div id="eventsList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
 </div>
 
 <!-- toast -->
-<div id="toast"
- class="fixed bottom-6 right-6 hidden
-        text-white px-5 py-3 rounded-lg shadow-lg">
-</div>
+<div id="toast" class="fixed bottom-6 right-6 hidden text-white px-5 py-3 rounded-lg shadow-lg"></div>
 
-</div>
+</div><!-- /pageRoot -->
 
 <script src="app.js" defer></script>
-
 <script>
 AOS.init({duration:900, once:true});
-window.addEventListener("load",()=>pageRoot.classList.remove("opacity-0"));
+window.addEventListener("load",()=>document.getElementById("pageRoot").classList.remove("opacity-0"));
 </script>
+
 <!-- SOCIAL FLOAT -->
 <div class="fixed bottom-6 left-6 flex flex-col gap-3 z-50">
-
-  <a href="https://www.linkedin.com/in/ieee-cis-vvce-b103363b0"
-     target="_blank"
-     class="socialBtn">in</a>
-
-  <a href="https://www.instagram.com/ieee.cis.vvce"
-     target="_blank"
-     class="socialBtn">ig</a>
-
+  <a href="https://www.linkedin.com/in/ieee-cis-vvce-b103363b0" target="_blank" class="socialBtn">in</a>
+  <a href="https://www.instagram.com/ieee.cis.vvce" target="_blank" class="socialBtn">ig</a>
 </div>
 
-<style>
-.socialBtn{
-  width:44px;height:44px;
-  display:flex;align-items:center;justify-content:center;
-  border-radius:14px;
-  background:rgba(255,255,255,0.12);
-  backdrop-filter:blur(10px);
-  border:1px solid rgba(255,255,255,0.25);
-  font-weight:bold;
-  transition:.25s;
-}
-.socialBtn:hover{
-  transform:scale(1.15);
-  box-shadow:0 0 20px rgba(56,189,248,.7);
-}
-</style>
-<footer class="mt-24 border-t border-white/10
-               bg-white/5 backdrop-blur-xl">
-
-<div class="max-w-6xl mx-auto px-6 py-10
-            grid md:grid-cols-3 gap-8 text-sm">
-
-<div>
-<h4 class="font-semibold text-cyan-300">IEEE CIS Student Chapter</h4>
-<p class="mt-3 text-slate-400">
-Promoting AI, ML and Computational Intelligence through
-student innovation and research.
-</p>
-</div>
-
-<div>
-<h4 class="font-semibold text-cyan-300">Affiliation</h4>
-<p class="mt-3 text-slate-400">
-Vidyavardhaka College of Engineering<br>
-IEEE Student Branch<br>
-IEEE CIS Society
-</p>
-</div>
-
-<div>
-<h4 class="font-semibold text-cyan-300">Contact</h4>
-<p class="mt-3 text-slate-400">
-ieee-cis@vvce.ac.in<br>
-Mysuru, Karnataka, India
-</p>
-</div>
-
-</div>
-
-<div class="text-center text-xs text-slate-500 pb-6">
-© 2026 IEEE CIS VVCE Student Chapter
-</div>
-
+<footer class="mt-24 border-t border-white/10 bg-white/5 backdrop-blur-xl">
+  <div class="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-3 gap-8 text-sm">
+    <div>
+      <h4 class="font-semibold text-cyan-300">IEEE CIS Student Chapter</h4>
+      <p class="mt-3 text-slate-400">Promoting AI, ML and Computational Intelligence through student innovation and research.</p>
+    </div>
+    <div>
+      <h4 class="font-semibold text-cyan-300">Affiliation</h4>
+      <p class="mt-3 text-slate-400">Vidyavardhaka College of Engineering<br>IEEE Student Branch<br>IEEE CIS Society</p>
+    </div>
+    <div>
+      <h4 class="font-semibold text-cyan-300">Contact</h4>
+      <p class="mt-3 text-slate-400">ieee-cis@vvce.ac.in<br>Mysuru, Karnataka, India</p>
+    </div>
+  </div>
+  <div class="text-center text-xs text-slate-500 pb-6">© 2026 IEEE CIS VVCE Student Chapter</div>
 </footer>
 
 </body>

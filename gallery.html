@@ -1,41 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Gallery — IEEE CIS</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — IEEE CIS VVCE</title>
+  <meta name="description" content="Photo gallery of IEEE CIS VVCE Student Chapter events, workshops, and activities.">
+
+  <style>
+  .navLink{transition:.25s;}
+  .navLink:hover{color:#67e8f9;}
+  .galImg{width:100%;height:auto;object-fit:contain;border-radius:18px;cursor:pointer;transition:.3s;border:1px solid rgba(255,255,255,.2);}
+  .galImg:hover{transform:scale(1.03);box-shadow:0 0 30px rgba(56,189,248,.4);}
+  </style>
 
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <header class="p-6 border-b border-white/10">
-  <div class="flex items-center justify-between">
-
-    <!-- LEFT — Chapter Name -->
-    <div>
-      <h1 class="text-xl font-bold text-cyan-400">
-        IEEE CIS VVCE Student Chapter
-      </h1>
-      <p class="text-xs text-slate-400">
-        Vidya Vardhaka College of Engineering — Mysuru
-      </p>
-    </div>
-
-    <!-- RIGHT — Logos -->
-    <div class="flex items-center gap-3">
-
-      <!-- IEEE CIS -->
-      <img src="https://msyblaohdkpztytpbszp.supabase.co/storage/v1/object/public/gallery/IEEE%20CIS%20logo.jpg"
-           class="h-8 sm:h-10 md:h-12 w-auto object-contain">
-
-      <!-- VVCE -->
-      <img src="https://msyblaohdkpztytpbszp.supabase.co/storage/v1/object/public/gallery/vvce-logo.png"
-           class="h-8 sm:h-10 md:h-12 w-auto object-contain">
-
-    </div>
-
-  </div>
-</header>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 </head>
 
 <body class="bg-slate-950 text-white">
+
+<!-- CHAPTER HEADER -->
+<header class="p-6 border-b border-white/10">
+  <div class="flex items-center justify-between">
+    <div>
+      <h1 class="text-xl font-bold text-cyan-400">IEEE CIS VVCE Student Chapter</h1>
+      <p class="text-xs text-slate-400">Vidya Vardhaka College of Engineering — Mysuru</p>
+    </div>
+    <div class="flex items-center gap-3">
+      <img src="https://msyblaohdkpztytpbszp.supabase.co/storage/v1/object/public/gallery/IEEE%20CIS%20logo.jpg"
+           class="h-8 sm:h-10 md:h-12 w-auto object-contain" alt="IEEE CIS Logo">
+      <img src="https://msyblaohdkpztytpbszp.supabase.co/storage/v1/object/public/gallery/vvce-logo.png"
+           class="h-8 sm:h-10 md:h-12 w-auto object-contain" alt="VVCE Logo">
+    </div>
+  </div>
+</header>
 
 <!-- gradient bg -->
 <div class="fixed inset-0 -z-10">
@@ -44,99 +44,60 @@
 </div>
 
 <!-- NAV -->
-<nav class="sticky top-4 mx-6 backdrop-blur-xl
-            bg-white/10 border border-white/20
-            rounded-2xl shadow-xl z-50">
-
+<nav class="sticky top-4 mx-6 backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl shadow-xl z-50">
   <div class="px-6 py-3 flex justify-between items-center">
-    <h1 class="font-bold">IEEE CIS VVCE</h1>
-
+    <span class="font-bold">IEEE CIS VVCE</span>
     <div class="hidden md:flex gap-6 text-sm">
       <a href="index.html" class="navLink">Home</a>
       <a href="events.html" class="navLink">Events</a>
+      <a href="projects.html" class="navLink">Projects</a>
+      <a href="research.html" class="navLink">Research</a>
+      <a href="resources.html" class="navLink">Resources</a>
       <a href="gallery.html" class="navLink text-cyan-300">Gallery</a>
+      <a href="committee.html" class="navLink">Committee</a>
       <a href="contact.html" class="navLink">Contact</a>
     </div>
   </div>
 </nav>
 
-<style>
-.navLink{transition:.25s}
-.navLink:hover{color:#67e8f9}
-</style>
-
 <!-- HEADER -->
 <section class="max-w-6xl mx-auto px-6 mt-20 text-center">
-  <h2 class="text-3xl font-bold text-cyan-300">
-    Event Gallery
-  </h2>
-  <p class="text-slate-400 mt-3">
-    Moments from IEEE CIS events, workshops and activities
-  </p>
+  <h2 class="text-3xl font-bold text-cyan-300">Event Gallery</h2>
+  <p class="text-slate-400 mt-3">Moments from IEEE CIS events, workshops and activities</p>
 </section>
 
 <!-- GRID -->
 <section class="max-w-6xl mx-auto px-6 mt-12">
-
   <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-
-    <!-- SAMPLE CARDS — replace later -->
-    <img src="https://assets.allegiance-educare.com/colleges/1524308583DJI_0170_1024.JPG"
-         class="galImg">
-
-    <img src="https://media.licdn.com/dms/image/v2/D5616AQFi2pwFg4Q2xg/profile-displaybackgroundimage-shrink_200_800/profile-displaybackgroundimage-shrink_200_800/0/1713955778538?e=2147483647&v=beta&t=bYS7xz8jW_GHucUyDGf2NgN50r87CmC5ribTjIo3Fl0"
-         class="galImg">
-
-    <img src="https://edu.ieee.org/in-reva/wp-content/uploads/sites/33/IEEE-CIS-logo-RGB-300ppi.png"
-         class="galImg">
-
-    <img src="https://vvce.ac.in/wp-content/uploads/2025/11/AIoT-2.jpg"
-         class="galImg">
-
+    <img src="https://assets.allegiance-educare.com/colleges/1524308583DJI_0170_1024.JPG" class="galImg" alt="Campus">
+    <img src="https://media.licdn.com/dms/image/v2/D5616AQFi2pwFg4Q2xg/profile-displaybackgroundimage-shrink_200_800/profile-displaybackgroundimage-shrink_200_800/0/1713955778538?e=2147483647&v=beta&t=bYS7xz8jW_GHucUyDGf2NgN50r87CmC5ribTjIo3Fl0" class="galImg" alt="IEEE CIS Event">
+    <img src="https://edu.ieee.org/in-reva/wp-content/uploads/sites/33/IEEE-CIS-logo-RGB-300ppi.png" class="galImg" alt="IEEE CIS Logo">
+    <img src="https://vvce.ac.in/wp-content/uploads/2025/11/AIoT-2.jpg" class="galImg" alt="AIoT Event">
   </div>
-
 </section>
 
-<style>
-.galImg{
-  width:100%;
-  height:auto;
-  object-fit:contain;
-  border-radius:18px;
-  cursor:pointer;
-  transition:.3s;
-  border:1px solid rgba(255,255,255,.2);
-}
-.galImg:hover{
-  transform:scale(1.03);
-  box-shadow:0 0 30px rgba(56,189,248,.4);
-}
-
-</style>
-
 <!-- IMAGE MODAL -->
-<div id="imgModal"
-     class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
-  <img id="imgModalSrc"
-       class="max-w-[90%] max-h-[90%] rounded-2xl">
+<div id="imgModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+  <img id="imgModalSrc" class="max-w-[90%] max-h-[90%] rounded-2xl" alt="Full size image">
 </div>
 
 <script>
+AOS.init({duration:900, once:true});
+
 function openImgModal(src){
-  imgModalSrc.src = src
-  imgModal.classList.remove("hidden")
-  imgModal.classList.add("flex")
+  document.getElementById("imgModalSrc").src = src;
+  document.getElementById("imgModal").classList.remove("hidden");
+  document.getElementById("imgModal").classList.add("flex");
 }
 
-document.querySelectorAll(".galImg")
-.forEach(img=>{
-  img.onclick = ()=> openImgModal(img.src)
-})
+document.querySelectorAll(".galImg").forEach(img=>{
+  img.onclick = ()=> openImgModal(img.src);
+});
 
-imgModal.onclick = ()=>{
-  imgModal.classList.add("hidden")
-  imgModal.classList.remove("flex")
-}
+document.getElementById("imgModal").onclick = ()=>{
+  document.getElementById("imgModal").classList.add("hidden");
+  document.getElementById("imgModal").classList.remove("flex");
+};
 </script>
 
 </body>

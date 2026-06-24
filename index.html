@@ -1,354 +1,262 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>IEEE CIS Student Chapter</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IEEE CIS VVCE Student Chapter</title>
+  <meta name="description" content="IEEE Computational Intelligence Society Student Chapter at Vidya Vardhaka College of Engineering, Mysuru. AI, ML, Research & Innovation.">
 
   <style>
-.glassStat{
-  backdrop-filter: blur(16px);
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.18);
-  padding: 28px;
-  border-radius: 20px;
-}
-</style>
+  .glassStat{
+    backdrop-filter: blur(16px);
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    padding: 28px;
+    border-radius: 20px;
+  }
+  .navLink{
+    position:relative;
+    transition:.25s;
+  }
+  .navLink:hover{
+    color:#67e8f9;
+  }
+  .navLink::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:-6px;
+    width:0; height:2px;
+    background:#22d3ee;
+    transition:.25s;
+  }
+  .navLink:hover::after{
+    width:100%;
+  }
+  .socialBtn{
+    width:44px;height:44px;
+    display:flex;align-items:center;justify-content:center;
+    border-radius:14px;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.25);
+    font-weight:bold;
+    transition:.25s;
+  }
+  .socialBtn:hover{
+    transform:scale(1.15);
+    box-shadow:0 0 20px rgba(56,189,248,.7);
+  }
+  </style>
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Supabase -->
-  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 
   <!-- AOS Animation Library -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <header class="p-6 border-b border-white/10">
-  <div class="flex items-center justify-between">
-
-    <!-- LEFT — Chapter Name -->
-    <div>
-      <h1 class="text-xl font-bold text-cyan-400">
-        IEEE CIS VVCE Student Chapter
-      </h1>
-      <p class="text-xs text-slate-400">
-        Vidya Vardhaka College of Engineering — Mysuru
-      </p>
-    </div>
-
-    <!-- RIGHT — Logos -->
-    <div class="flex items-center gap-3">
-
-      <!-- IEEE CIS -->
-      <img src="https://msyblaohdkpztytpbszp.supabase.co/storage/v1/object/public/gallery/IEEE%20CIS%20logo.jpg"
-           class="h-8 sm:h-10 md:h-12 w-auto object-contain">
-
-      <!-- VVCE -->
-      <img src="https://msyblaohdkpztytpbszp.supabase.co/storage/v1/object/public/gallery/vvce-logo.png"
-           class="h-8 sm:h-10 md:h-12 w-auto object-contain">
-
-    </div>
-
-  </div>
-</header>
-
 </head>
 
 <body class="bg-slate-950 text-white overflow-x-hidden">
+
+<!-- CHAPTER HEADER -->
+<header class="p-6 border-b border-white/10">
+  <div class="flex items-center justify-between">
+    <div>
+      <h1 class="text-xl font-bold text-cyan-400">IEEE CIS VVCE Student Chapter</h1>
+      <p class="text-xs text-slate-400">Vidya Vardhaka College of Engineering — Mysuru</p>
+    </div>
+    <div class="flex items-center gap-3">
+      <img src="https://msyblaohdkpztytpbszp.supabase.co/storage/v1/object/public/gallery/IEEE%20CIS%20logo.jpg"
+           class="h-8 sm:h-10 md:h-12 w-auto object-contain" alt="IEEE CIS Logo">
+      <img src="https://msyblaohdkpztytpbszp.supabase.co/storage/v1/object/public/gallery/vvce-logo.png"
+           class="h-8 sm:h-10 md:h-12 w-auto object-contain" alt="VVCE Logo">
+    </div>
+  </div>
+</header>
+
 <div id="pageRoot" class="opacity-0 transition-opacity duration-700">
 
   <!-- GLOBAL GRADIENT BACKGROUND -->
-<div class="fixed inset-0 -z-10">
-
-  <div class="absolute w-[800px] h-[800px]
-              bg-indigo-600/30 blur-[140px]
-              top-[-200px] left-[-200px]"></div>
-
-  <div class="absolute w-[700px] h-[700px]
-              bg-cyan-500/20 blur-[140px]
-              bottom-[-200px] right-[-200px]"></div>
-
-</div>
-
-<canvas id="particles"
-        class="fixed inset-0 -z-10"></canvas>
-
-
-<!-- NAVBAR -->
-<nav class="sticky top-4 mx-6 backdrop-blur-xl
-            bg-white/10 border border-white/20
-            rounded-2xl shadow-xl z-50">
-
-  <div class="px-6 py-3 flex justify-between items-center">
-
-    <h1 class="font-bold tracking-wide">
-      IEEE CIS VVCE
-    </h1>
-
-    <div class="hidden md:flex gap-6 text-sm">
-
-      <a href="index.html" class="navLink">Home</a>
-      <a href="events.html" class="navLink">Events</a>
-      <a href="projects.html" class="navLink">Projects</a>
-      <a href="research.html" class="navLink">Research</a>
-      <a href="resources.html" class="navLink">Resources</a>
-      <a href="gallery.html" class="navLink">Gallery</a>
-      <a href="committee.html" class="navLink">Committee</a>
-      <a href="contact.html" class="navLink">Contact</a>
-
-    </div>
-
+  <div class="fixed inset-0 -z-10">
+    <div class="absolute w-[800px] h-[800px] bg-indigo-600/30 blur-[140px] top-[-200px] left-[-200px]"></div>
+    <div class="absolute w-[700px] h-[700px] bg-cyan-500/20 blur-[140px] bottom-[-200px] right-[-200px]"></div>
   </div>
-</nav>
 
-<style>
-.navLink{
-  position:relative;
-  transition:.25s;
-}
-.navLink:hover{
-  color:#67e8f9;
-}
-.navLink::after{
-  content:"";
-  position:absolute;
-  left:0; bottom:-6px;
-  width:0; height:2px;
-  background:#22d3ee;
-  transition:.25s;
-}
-.navLink:hover::after{
-  width:100%;
-}
-</style>
+  <canvas id="particles" class="fixed inset-0 -z-10"></canvas>
 
-
-
-<!-- MAIN -->
-<div class="max-w-5xl mx-auto p-6">
-
-  <!-- HERO -->
- <section class="max-w-6xl mx-auto mt-20 px-6">
-
-  <div class="grid md:grid-cols-2 gap-10 items-center">
-
-    <div data-aos="fade-right">
-
-      <h2 class="text-5xl font-bold leading-tight">
-        Computational Intelligence
-        <span class="text-cyan-400">Student Chapter</span>
-      </h2>
-
-      <p class="mt-6 text-slate-300 text-lg">
-        AI • Machine Learning • Research • Innovation • Technical Excellence
-      </p>
-
-      <div class="mt-8 flex gap-4">
-
-        <a href="events.html"
-           class="px-6 py-3 rounded-xl font-semibold
-       bg-gradient-to-r from-cyan-500 to-blue-600
-       shadow-[0_0_30px_rgba(56,189,248,0.5)]
-       hover:shadow-[0_0_50px_rgba(56,189,248,0.9)]
-       transition hover:scale-105 active:scale-95"
->
-          View Events
-        </a>
-
-      
-
+  <!-- NAVBAR -->
+  <nav class="sticky top-4 mx-6 backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl shadow-xl z-50">
+    <div class="px-6 py-3 flex justify-between items-center">
+      <span class="font-bold tracking-wide">IEEE CIS VVCE</span>
+      <div class="hidden md:flex gap-6 text-sm">
+        <a href="index.html" class="navLink">Home</a>
+        <a href="events.html" class="navLink">Events</a>
+        <a href="projects.html" class="navLink">Projects</a>
+        <a href="research.html" class="navLink">Research</a>
+        <a href="resources.html" class="navLink">Resources</a>
+        <a href="gallery.html" class="navLink">Gallery</a>
+        <a href="committee.html" class="navLink">Committee</a>
+        <a href="contact.html" class="navLink">Contact</a>
       </div>
+    </div>
+  </nav>
 
+  <!-- MAIN -->
+  <div class="max-w-5xl mx-auto p-6">
+
+    <!-- HERO -->
+    <section class="max-w-6xl mx-auto mt-20 px-6">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div data-aos="fade-right">
+          <h2 class="text-5xl font-bold leading-tight">
+            Computational Intelligence
+            <span class="text-cyan-400">Student Chapter</span>
+          </h2>
+          <p class="mt-6 text-slate-300 text-lg">
+            AI • Machine Learning • Research • Innovation • Technical Excellence
+          </p>
+          <div class="mt-8 flex gap-4">
+            <a href="events.html"
+               class="px-6 py-3 rounded-xl font-semibold
+               bg-gradient-to-r from-cyan-500 to-blue-600
+               shadow-[0_0_30px_rgba(56,189,248,0.5)]
+               hover:shadow-[0_0_50px_rgba(56,189,248,0.9)]
+               transition hover:scale-105 active:scale-95">
+              View Events
+            </a>
+          </div>
+        </div>
+
+        <div data-aos="zoom-in">
+          <img id="heroImg"
+               src="https://images.unsplash.com/photo-1677442136019-21780ecad995"
+               alt="AI Illustration"
+               class="rounded-2xl shadow-2xl transition-transform duration-300">
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="max-w-6xl mx-auto px-6 mt-20">
+      <div class="grid md:grid-cols-4 gap-8 text-center">
+        <div class="glassStat">
+          <h3 id="statEvents" class="text-4xl font-bold">0</h3>
+          <p class="text-slate-400 mt-2">Events</p>
+        </div>
+        <div class="glassStat">
+          <h3 id="statParticipants" class="text-4xl font-bold">0</h3>
+          <p class="text-slate-400 mt-2">Participants</p>
+        </div>
+        <div class="glassStat">
+          <h3 id="statResources" class="text-4xl font-bold">0</h3>
+          <p class="text-slate-400 mt-2">Resources</p>
+        </div>
+        <div class="glassStat">
+          <h3 id="statProjects" class="text-4xl font-bold">0</h3>
+          <p class="text-slate-400 mt-2">Projects</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT VVCE -->
+    <section class="max-w-6xl mx-auto px-6 mt-20" data-aos="fade-up">
+      <div class="backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-8 shadow-xl">
+        <h2 class="text-2xl font-bold text-cyan-300">About VVCE</h2>
+        <p class="mt-4 text-slate-300 leading-relaxed">
+          Vidyavardhaka College of Engineering (VVCE), Mysuru, is an
+          autonomous institution known for academic excellence,
+          innovation, and industry-oriented technical education.
+          The institution actively supports research, student chapters,
+          and global technical collaborations.
+        </p>
+      </div>
+    </section>
+
+    <!-- ABOUT IEEE -->
+    <section class="max-w-6xl mx-auto px-6 mt-10" data-aos="fade-up">
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-8 shadow-xl">
+          <h3 class="text-xl font-bold text-cyan-300">About IEEE</h3>
+          <p class="mt-3 text-slate-300 leading-relaxed">
+            IEEE is the world's largest technical professional organization
+            dedicated to advancing technology for humanity. It supports
+            global collaboration in engineering, computing, and innovation
+            through standards, conferences, and publications.
+          </p>
+        </div>
+        <div class="backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-8 shadow-xl">
+          <h3 class="text-xl font-bold text-cyan-300">About IEEE Computational Intelligence Society</h3>
+          <p class="mt-3 text-slate-300 leading-relaxed">
+            IEEE CIS focuses on artificial intelligence, neural networks,
+            fuzzy systems, evolutionary computation, and machine learning.
+            The society promotes research, competitions, and student
+            innovation in computational intelligence technologies.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAPTER GOALS HEADING -->
+    <div class="mt-20 mb-6" data-aos="fade-right">
+      <h2 class="text-3xl font-bold">Chapter Goals</h2>
+      <p class="text-slate-400 mt-2">Our mission and focus areas for IEEE CIS VVCE Student Chapter</p>
     </div>
 
-    <div data-aos="zoom-in">
-      <img id="heroImg"
-     src="https://images.unsplash.com/photo-1677442136019-21780ecad995"
-     class="rounded-2xl shadow-2xl transition-transform duration-300">
+    <!-- GOALS / ACHIEVEMENTS STRIP -->
+    <section class="max-w-6xl mx-auto px-6 mt-4" data-aos="fade-up">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="glassStat text-center">
+          <h3 class="text-3xl font-bold text-cyan-300">Technical Excellence</h3>
+          <p class="text-slate-400 mt-2">Workshops, coding events, and AI/ML sessions to build practical skills</p>
+        </div>
+        <div class="glassStat text-center">
+          <h3 class="text-3xl font-bold text-cyan-300">Research &amp; Innovation</h3>
+          <p class="text-slate-400 mt-2">Projects and research activities in computational intelligence</p>
+        </div>
+        <div class="glassStat text-center">
+          <h3 class="text-3xl font-bold text-cyan-300">Industry &amp; Career Readiness</h3>
+          <p class="text-slate-400 mt-2">Expert talks and programs to prepare students for tech careers</p>
+        </div>
+      </div>
+    </section>
 
-    </div>
+    <!-- GALLERY -->
+    <section class="max-w-6xl mx-auto px-6 mt-20" data-aos="fade-up">
+      <h2 class="text-3xl font-bold mb-8">Event Highlights</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+             alt="Event 1" class="rounded-2xl shadow-xl hover:scale-105 transition">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d"
+             alt="Event 2" class="rounded-2xl shadow-xl hover:scale-105 transition">
+        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df"
+             alt="Event 3" class="rounded-2xl shadow-xl hover:scale-105 transition">
+      </div>
+    </section>
 
-  </div>
+  </div><!-- /max-w-5xl -->
 
-</section>
+  <!-- TOAST POPUP -->
+  <div id="toast" class="fixed bottom-6 right-6 hidden text-white px-5 py-3 rounded-lg shadow-lg"></div>
 
+  <!-- JS -->
+  <script src="app.js" defer></script>
 
- <!-- Manual upgrading -->
-<section class="max-w-6xl mx-auto px-6 mt-20">
+  <!-- AOS INIT -->
+  <script>
+    AOS.init({ duration: 800, once: true });
+  </script>
 
-  <div class="grid md:grid-cols-4 gap-8 text-center">
+</div><!-- /pageRoot -->
 
-    <div class="glassStat">
-      <h3 class="text-4xl font-bold" data-count="25">1</h3>
-      <p class="text-slate-400 mt-2">Events</p>
-    </div>
-
-    <div class="glassStat">
-      <h3 class="text-4xl font-bold" data-count="1200">0</h3>
-      <p class="text-slate-400 mt-2">Participants</p>
-    </div>
-
-    <div class="glassStat">
-      <h3 class="text-4xl font-bold" data-count="40">0</h3>
-      <p class="text-slate-400 mt-2">Resources</p>
-    </div>
-
-    <div class="glassStat">
-      <h3 class="text-4xl font-bold" data-count="15">0</h3>
-      <p class="text-slate-400 mt-2">Projects</p>
-    </div>
-
-  </div>
-
-</section>
-<!-- ABOUT VVCE -->
-<section class="max-w-6xl mx-auto px-6 mt-20"
-         data-aos="fade-up">
-
-  <div class="backdrop-blur-xl bg-white/10 border border-white/20
-              rounded-2xl p-8 shadow-xl">
-
-    <h2 class="text-2xl font-bold text-cyan-300">
-      About VVCE
-    </h2>
-
-    <p class="mt-4 text-slate-300 leading-relaxed">
-      Vidyavardhaka College of Engineering (VVCE), Mysuru, is an
-      autonomous institution known for academic excellence,
-      innovation, and industry-oriented technical education.
-      The institution actively supports research, student chapters,
-      and global technical collaborations.
-    </p>
-
-  </div>
-
-</section>
-<!-- ABOUT IEEE -->
-<section class="max-w-6xl mx-auto px-6 mt-10"
-         data-aos="fade-up">
-
-  <div class="grid md:grid-cols-2 gap-8">
-
-    <div class="backdrop-blur-xl bg-white/10 border border-white/20
-                rounded-2xl p-8 shadow-xl">
-
-      <h3 class="text-xl font-bold text-cyan-300">
-        About IEEE
-      </h3>
-
-      <p class="mt-3 text-slate-300 leading-relaxed">
-        IEEE is the world’s largest technical professional organization
-        dedicated to advancing technology for humanity. It supports
-        global collaboration in engineering, computing, and innovation
-        through standards, conferences, and publications.
-      </p>
-
-    </div>
-    <div class="backdrop-blur-xl bg-white/10 border border-white/20
-                rounded-2xl p-8 shadow-xl">
-
-      <h3 class="text-xl font-bold text-cyan-300">
-        About IEEE Computational Intelligence Society
-      </h3>
-
-      <p class="mt-3 text-slate-300 leading-relaxed">
-        IEEE CIS focuses on artificial intelligence, neural networks,
-        fuzzy systems, evolutionary computation, and machine learning.
-        The society promotes research, competitions, and student
-        innovation in computational intelligence technologies.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-<div class="mt-20 mb-6" data-aos="fade-right">
-  <h2 class="text-3xl font-bold">
-    Chapter Goals
-  </h2>
-  <p class="text-slate-400 mt-2">
-    Our mission and focus areas for IEEE CIS VVCE Student Chapter
-  </p>
-</div>
-<!-- ACHIEVEMENTS STRIP -->
-<section class="max-w-6xl mx-auto px-6 mt-20"
-         data-aos="fade-up">
-
-  <div class="grid md:grid-cols-3 gap-8">
-
-    <div class="glassStat text-center">
-      <h3 class="text-3xl font-bold text-cyan-300">
-       Technical Excellence
-      </h3>
-      <p class="text-slate-400 mt-2">
-      Workshops, coding events, and AI/ML sessions to build practical skills
-      </p>
-    </div>
-
-    <div class="glassStat text-center">
-      <h3 class="text-3xl font-bold text-cyan-300">
-        Research & Innovation
-      </h3>
-      <p class="text-slate-400 mt-2">
-        Projects and research activities in computational intelligence
-      </p>
-    </div>
-
-    <div class="glassStat text-center">
-      <h3 class="text-3xl font-bold text-cyan-300">
-        Industry & Career Readiness
-      </h3>
-      <p class="text-slate-400 mt-2">
-        Expert talks and programs to prepare students for tech careers
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section class="max-w-6xl mx-auto px-6 mt-20"
-         data-aos="fade-up">
-
-  <h2 class="text-3xl font-bold mb-8">
-    Event Highlights
-  </h2>
-
-  <div class="grid md:grid-cols-3 gap-6">
-
-    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
-         class="rounded-2xl shadow-xl hover:scale-105 transition">
-
-    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d"
-         class="rounded-2xl shadow-xl hover:scale-105 transition">
-
-    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df"
-         class="rounded-2xl shadow-xl hover:scale-105 transition">
-
-  </div>
-
-</section>
-
-<!-- TOAST POPUP -->
-<div id="toast"
- class="fixed bottom-6 right-6 hidden
-        text-white px-5 py-3 rounded-lg shadow-lg">
-</div>
-
-<!-- JS -->
-<script src="app.js" defer></script>
-
-<!-- AOS INIT -->
-<script>
-  AOS.init({ duration: 800, once: true });
-</script>
-</div>
 <script>
 window.addEventListener("load", () => {
-  document.getElementById("pageRoot")
-          ?.classList.remove("opacity-0");
+  document.getElementById("pageRoot")?.classList.remove("opacity-0");
 });
 </script>
+
 <script>
 window.addEventListener("scroll", () => {
   const y = window.scrollY;
@@ -356,6 +264,7 @@ window.addEventListener("scroll", () => {
   if (img) img.style.transform = `translateY(${y * 0.15}px)`;
 });
 </script>
+
 <script>
 const c = document.getElementById("particles");
 const ctx = c.getContext("2d");
@@ -390,80 +299,34 @@ function draw(){
 }
 draw();
 </script>
-<footer class="mt-24 border-t border-white/10
-               bg-white/5 backdrop-blur-xl">
 
-  <div class="max-w-6xl mx-auto px-6 py-10
-              grid md:grid-cols-3 gap-8 text-sm">
-
+<footer class="mt-24 border-t border-white/10 bg-white/5 backdrop-blur-xl">
+  <div class="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-3 gap-8 text-sm">
     <div>
-      <h4 class="font-semibold text-cyan-300">
-        IEEE CIS Student Chapter
-      </h4>
-      <p class="mt-3 text-slate-400">
-        Promoting AI, ML and Computational Intelligence
-        through student innovation and research.
-      </p>
+      <h4 class="font-semibold text-cyan-300">IEEE CIS Student Chapter</h4>
+      <p class="mt-3 text-slate-400">Promoting AI, ML and Computational Intelligence through student innovation and research.</p>
     </div>
-
     <div>
-      <h4 class="font-semibold text-cyan-300">
-        Affiliation
-      </h4>
+      <h4 class="font-semibold text-cyan-300">Affiliation</h4>
       <p class="mt-3 text-slate-400">
         Vidyavardhaka College of Engineering<br>
         IEEE Student Branch<br>
         IEEE CIS Society
       </p>
     </div>
-
     <div>
-      <h4 class="font-semibold text-cyan-300">
-        Contact
-      </h4>
-      <p class="mt-3 text-slate-400">
-        ieee-cis@vvce.ac.in<br>
-        Mysuru, Karnataka, India
-      </p>
+      <h4 class="font-semibold text-cyan-300">Contact</h4>
+      <p class="mt-3 text-slate-400">ieee-cis@vvce.ac.in<br>Mysuru, Karnataka, India</p>
     </div>
-
   </div>
-
-  <div class="text-center text-xs text-slate-500 pb-6">
-    © 2026 IEEE CIS VVCE Student Chapter
-  </div>
-
+  <div class="text-center text-xs text-slate-500 pb-6">© 2026 IEEE CIS VVCE Student Chapter</div>
 </footer>
 
 <!-- SOCIAL FLOAT -->
 <div class="fixed bottom-6 left-6 flex flex-col gap-3 z-50">
-
-  <a href="https://www.linkedin.com/in/ieee-cis-vvce-b103363b0"
-     target="_blank"
-     class="socialBtn">in</a>
-
-  <a href="https://www.instagram.com/ieee.cis.vvce"
-     target="_blank"
-     class="socialBtn">ig</a>
-
+  <a href="https://www.linkedin.com/in/ieee-cis-vvce-b103363b0" target="_blank" class="socialBtn">in</a>
+  <a href="https://www.instagram.com/ieee.cis.vvce" target="_blank" class="socialBtn">ig</a>
 </div>
-
-<style>
-.socialBtn{
-  width:44px;height:44px;
-  display:flex;align-items:center;justify-content:center;
-  border-radius:14px;
-  background:rgba(255,255,255,0.12);
-  backdrop-filter:blur(10px);
-  border:1px solid rgba(255,255,255,0.25);
-  font-weight:bold;
-  transition:.25s;
-}
-.socialBtn:hover{
-  transform:scale(1.15);
-  box-shadow:0 0 20px rgba(56,189,248,.7);
-}
-</style>
 
 </body>
 </html>

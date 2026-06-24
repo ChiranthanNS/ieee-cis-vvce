@@ -1,41 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact — IEEE CIS VVCE</title>
+  <meta name="description" content="Contact the IEEE CIS VVCE Student Chapter for inquiries, collaborations or event information.">
+
+  <style>
+  .navLink{position:relative;transition:.25s;}
+  .navLink:hover{color:#67e8f9;}
+  .navLink::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:#22d3ee;transition:.25s;}
+  .navLink:hover::after{width:100%;}
+  .glassCard{backdrop-filter:blur(18px);background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);padding:28px;border-radius:20px;box-shadow:0 0 40px rgba(0,0,0,0.4);}
+  .proInput{width:100%;background:rgba(15,23,42,0.6);border:1px solid rgba(255,255,255,0.35);padding:14px;border-radius:14px;color:white;outline:none;}
+  .proInput::placeholder{color:#94a3b8;}
+  .proInput:focus{border-color:#22d3ee;box-shadow:0 0 14px rgba(34,211,238,.5);}
+  .proBtn{width:100%;padding:14px;border-radius:16px;font-weight:600;background:linear-gradient(90deg,#22d3ee,#2563eb);box-shadow:0 0 30px rgba(56,189,248,.4);transition:.25s;}
+  .proBtn:hover{transform:scale(1.05);}
+  .socialBtn{padding:10px 16px;border-radius:12px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);transition:.25s;}
+  .socialBtn:hover{background:rgba(255,255,255,0.2);}
+  </style>
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-  <header class="p-6 border-b border-white/10">
-  <div class="flex items-center justify-between">
-
-    <!-- LEFT — Chapter Name -->
-    <div>
-      <h1 class="text-xl font-bold text-cyan-400">
-        IEEE CIS VVCE Student Chapter
-      </h1>
-      <p class="text-xs text-slate-400">
-        Vidya Vardhaka College of Engineering — Mysuru
-      </p>
-    </div>
-
-    <!-- RIGHT — Logos -->
-    <div class="flex items-center gap-3">
-
-      <!-- IEEE CIS -->
-      <img src="https://msyblaohdkpztytpbszp.supabase.co/storage/v1/object/public/gallery/IEEE%20CIS%20logo.jpg"
-           class="h-8 sm:h-10 md:h-12 w-auto object-contain">
-
-      <!-- VVCE -->
-      <img src="https://msyblaohdkpztytpbszp.supabase.co/storage/v1/object/public/gallery/vvce-logo.png"
-           class="h-8 sm:h-10 md:h-12 w-auto object-contain">
-
-    </div>
-
-  </div>
-</header>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 </head>
 
 <body class="bg-slate-950 text-white min-h-screen">
+
+<!-- CHAPTER HEADER -->
+<header class="p-6 border-b border-white/10">
+  <div class="flex items-center justify-between">
+    <div>
+      <h1 class="text-xl font-bold text-cyan-400">IEEE CIS VVCE Student Chapter</h1>
+      <p class="text-xs text-slate-400">Vidya Vardhaka College of Engineering — Mysuru</p>
+    </div>
+    <div class="flex items-center gap-3">
+      <img src="https://msyblaohdkpztytpbszp.supabase.co/storage/v1/object/public/gallery/IEEE%20CIS%20logo.jpg"
+           class="h-8 sm:h-10 md:h-12 w-auto object-contain" alt="IEEE CIS Logo">
+      <img src="https://msyblaohdkpztytpbszp.supabase.co/storage/v1/object/public/gallery/vvce-logo.png"
+           class="h-8 sm:h-10 md:h-12 w-auto object-contain" alt="VVCE Logo">
+    </div>
+  </div>
+</header>
 
 <!-- glow background -->
 <div class="fixed inset-0 -z-10">
@@ -43,40 +49,33 @@
   <div class="absolute w-[700px] h-[700px] bg-indigo-600/20 blur-[140px] right-[-200px]"></div>
 </div>
 
-<!-- HEADER -->
-<header class="p-6 border-b border-white/10">
-  <h1 class="text-2xl font-bold text-cyan-400">
-    CONTACT
-  </h1>
-  <p class="text-slate-400 text-sm">
-    Official communication & collaboration channel
-  </p>
-</header>
+<!-- NAV -->
+<nav class="sticky top-4 mx-6 backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl shadow-xl z-50">
+  <div class="px-6 py-3 flex justify-between items-center">
+    <span class="font-bold tracking-wide">IEEE CIS VVCE</span>
+    <div class="hidden md:flex gap-6 text-sm">
+      <a href="index.html" class="navLink">Home</a>
+      <a href="events.html" class="navLink">Events</a>
+      <a href="projects.html" class="navLink">Projects</a>
+      <a href="research.html" class="navLink">Research</a>
+      <a href="resources.html" class="navLink">Resources</a>
+      <a href="gallery.html" class="navLink">Gallery</a>
+      <a href="committee.html" class="navLink">Committee</a>
+      <a href="contact.html" class="navLink">Contact</a>
+    </div>
+  </div>
+</nav>
 
 <!-- CONTACT SECTION -->
 <section class="max-w-7xl mx-auto px-6 py-16">
-
   <div class="grid lg:grid-cols-2 gap-12">
 
     <!-- LEFT — FORM -->
     <div class="glassCard">
-
-      <h2 class="text-xl font-semibold mb-6 text-cyan-300">
-        Send a Message
-      </h2>
-
+      <h2 class="text-xl font-semibold mb-6 text-cyan-300">Send a Message</h2>
       <form id="contactForm" class="space-y-5">
-
-        <input id="name"
-               placeholder="Full Name"
-               class="proInput"
-               required>
-
-        <input id="cemail"
-               type="email"
-               placeholder="Email"
-               class="proInput"
-               required>
+        <input id="name" placeholder="Full Name" class="proInput" required>
+        <input id="cemail" type="email" placeholder="Email" class="proInput" required>
 
         <select id="caffiliation" class="proInput">
           <option value="">Affiliation</option>
@@ -92,19 +91,10 @@
           <option>Collaboration</option>
         </select>
 
-        <textarea id="cmessage"
-                  rows="5"
-                  placeholder="Your message..."
-                  class="proInput"
-                  required></textarea>
+        <textarea id="cmessage" rows="5" placeholder="Your message..." class="proInput" required></textarea>
 
-        <button type="submit" class="proBtn">
-          Send Message
-        </button>
-
-        <div id="contactStatus"
-             class="text-sm text-slate-300"></div>
-
+        <button type="submit" class="proBtn">Send Message</button>
+        <div id="contactStatus" class="text-sm text-slate-300"></div>
       </form>
     </div>
 
@@ -113,38 +103,25 @@
 
       <!-- Official Contact -->
       <div class="glassCard">
-        <h3 class="text-lg font-semibold text-cyan-300 mb-4">
-          Official Contact
-        </h3>
-
+        <h3 class="text-lg font-semibold text-cyan-300 mb-4">Official Contact</h3>
         <div class="text-slate-300 text-sm space-y-2 leading-relaxed">
           <p>IEEE CIS Student Chapter — VVCE</p>
           <p>
-            Department of Artificial Intelligence & ML<br>
+            Department of Artificial Intelligence &amp; ML<br>
             Vidya Vardhaka College of Engineering<br>
             Mysuru, Karnataka — India
           </p>
           <p>📧 ieee.cis@vvce.ac.in</p>
-          <p class="text-slate-500">
-            Response time: 24–48 working hours
-          </p>
+          <p class="text-slate-500">Response time: 24–48 working hours</p>
         </div>
       </div>
 
       <!-- Social -->
       <div class="glassCard">
-        <h3 class="text-lg font-semibold text-cyan-300 mb-4">
-          Connect With Us
-        </h3>
-
+        <h3 class="text-lg font-semibold text-cyan-300 mb-4">Connect With Us</h3>
         <div class="flex gap-4">
-          <a href="https://www.linkedin.com/in/ieee-cis-vvce-b103363b0"
-             target="_blank"
-             class="socialBtn">LinkedIn</a>
-
-          <a href="https://www.instagram.com/ieee.cis.vvce"
-             target="_blank"
-             class="socialBtn">Instagram</a>
+          <a href="https://www.linkedin.com/in/ieee-cis-vvce-b103363b0" target="_blank" class="socialBtn">LinkedIn</a>
+          <a href="https://www.instagram.com/ieee.cis.vvce" target="_blank" class="socialBtn">Instagram</a>
         </div>
       </div>
 
@@ -152,68 +129,14 @@
       <div class="glassCard p-0 overflow-hidden">
         <iframe
           src="https://maps.google.com/maps?q=VVCE%20Mysore&t=&z=13&ie=UTF8&iwloc=&output=embed"
-          class="w-full h-64 border-0"></iframe>
+          class="w-full h-64 border-0"
+          title="VVCE Location Map">
+        </iframe>
       </div>
 
     </div>
-
   </div>
 </section>
-
-<!-- UI STYLES -->
-<style>
-.glassCard{
-  backdrop-filter: blur(18px);
-  background: rgba(255,255,255,0.08);
-  border:1px solid rgba(255,255,255,0.18);
-  padding:28px;
-  border-radius:20px;
-  box-shadow:0 0 40px rgba(0,0,0,0.4);
-}
-
-/* ✅ FIXED INPUT STYLE */
-.proInput{
-  width:100%;
-  background:rgba(15,23,42,0.6);
-  border:1px solid rgba(255,255,255,0.35);
-  padding:14px;
-  border-radius:14px;
-  color:white;
-  outline:none;
-}
-
-.proInput::placeholder{
-  color:#cbd5f5;
-}
-
-.proInput:focus{
-  border-color:#22d3ee;
-  box-shadow:0 0 14px rgba(34,211,238,.5);
-}
-
-/* ✅ BUTTON */
-.proBtn{
-  width:100%;
-  padding:14px;
-  border-radius:16px;
-  font-weight:600;
-  background:linear-gradient(90deg,#22d3ee,#2563eb);
-  box-shadow:0 0 30px rgba(56,189,248,.4);
-  transition:.25s;
-}
-
-.proBtn:hover{
-  transform:scale(1.05);
-}
-
-/* ✅ SOCIAL */
-.socialBtn{
-  padding:10px 16px;
-  border-radius:12px;
-  background:rgba(255,255,255,0.12);
-  border:1px solid rgba(255,255,255,0.25);
-}
-</style>
 
 <script src="app.js" defer></script>
 

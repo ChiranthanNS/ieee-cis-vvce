@@ -1,136 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Committee — IEEE CIS VVCE</title>
+  <meta name="description" content="Meet the leadership team of IEEE CIS VVCE Student Chapter driving AI and ML initiatives.">
 
-  <title>Committee — IEEE CIS</title>
+  <style>
+  .navLink{position:relative;transition:.25s;}
+  .navLink:hover{color:#67e8f9;}
+  .navLink::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:#22d3ee;transition:.25s;}
+  .navLink:hover::after{width:100%;}
+  .socialBtn{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:14px;background:rgba(255,255,255,0.12);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.25);font-weight:bold;transition:.25s;}
+  .socialBtn:hover{transform:scale(1.15);box-shadow:0 0 20px rgba(56,189,248,.7);}
+  .memberCard{backdrop-filter:blur(16px);background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);padding:20px;border-radius:20px;text-align:center;}
+  .avatar{width:110px;height:110px;border-radius:999px;object-fit:cover;margin:auto;border:3px solid rgba(56,189,248,.6);}
+  .glassCard{backdrop-filter:blur(16px);background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);padding:28px;border-radius:20px;box-shadow:0 0 40px rgba(0,0,0,0.4);}
+  .miniBtn{padding:8px 14px;border-radius:12px;background:linear-gradient(90deg,#22d3ee,#2563eb);box-shadow:0 0 18px rgba(56,189,248,.5);transition:.25s;display:inline-block;}
+  .miniBtn:hover{transform:scale(1.08);}
+  </style>
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <header class="p-6 border-b border-white/10">
-  <div class="flex items-center justify-between">
-
-    <!-- LEFT — Chapter Name -->
-    <div>
-      <h1 class="text-xl font-bold text-cyan-400">
-        IEEE CIS VVCE Student Chapter
-      </h1>
-      <p class="text-xs text-slate-400">
-        Vidya Vardhaka College of Engineering — Mysuru
-      </p>
-    </div>
-
-    <!-- RIGHT — Logos -->
-    <div class="flex items-center gap-3">
-
-      <!-- IEEE CIS -->
-      <img src="https://msyblaohdkpztytpbszp.supabase.co/storage/v1/object/public/gallery/IEEE%20CIS%20logo.jpg"
-           class="h-8 sm:h-10 md:h-12 w-auto object-contain">
-
-      <!-- VVCE -->
-      <img src="https://msyblaohdkpztytpbszp.supabase.co/storage/v1/object/public/gallery/vvce-logo.png"
-           class="h-8 sm:h-10 md:h-12 w-auto object-contain">
-
-    </div>
-
-  </div>
-</header>
 </head>
 
 <body class="bg-slate-950 text-white">
+
+<!-- CHAPTER HEADER -->
+<header class="p-6 border-b border-white/10">
+  <div class="flex items-center justify-between">
+    <div>
+      <h1 class="text-xl font-bold text-cyan-400">IEEE CIS VVCE Student Chapter</h1>
+      <p class="text-xs text-slate-400">Vidya Vardhaka College of Engineering — Mysuru</p>
+    </div>
+    <div class="flex items-center gap-3">
+      <img src="https://msyblaohdkpztytpbszp.supabase.co/storage/v1/object/public/gallery/IEEE%20CIS%20logo.jpg"
+           class="h-8 sm:h-10 md:h-12 w-auto object-contain" alt="IEEE CIS Logo">
+      <img src="https://msyblaohdkpztytpbszp.supabase.co/storage/v1/object/public/gallery/vvce-logo.png"
+           class="h-8 sm:h-10 md:h-12 w-auto object-contain" alt="VVCE Logo">
+    </div>
+  </div>
+</header>
 
 <div id="pageRoot" class="opacity-0 transition-opacity duration-700">
 
 <!-- gradient -->
 <div class="fixed inset-0 -z-10">
-  <div class="absolute w-[700px] h-[700px]
-              bg-indigo-600/20 blur-[140px]"></div>
+  <div class="absolute w-[700px] h-[700px] bg-indigo-600/20 blur-[140px]"></div>
 </div>
 
-<!-- NAV — paste pro navbar -->
+<!-- NAV -->
+<nav class="sticky top-4 mx-6 backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl shadow-xl z-50">
+  <div class="px-6 py-3 flex justify-between items-center">
+    <span class="font-bold tracking-wide">IEEE CIS VVCE</span>
+    <div class="hidden md:flex gap-6 text-sm">
+      <a href="index.html" class="navLink">Home</a>
+      <a href="events.html" class="navLink">Events</a>
+      <a href="projects.html" class="navLink">Projects</a>
+      <a href="research.html" class="navLink">Research</a>
+      <a href="resources.html" class="navLink">Resources</a>
+      <a href="gallery.html" class="navLink">Gallery</a>
+      <a href="committee.html" class="navLink">Committee</a>
+      <a href="contact.html" class="navLink">Contact</a>
+    </div>
+  </div>
+</nav>
 
 <section class="max-w-6xl mx-auto px-6 mt-20">
+  <h2 class="text-4xl font-bold text-cyan-300" data-aos="fade-down">Chapter Committee</h2>
+  <p class="text-slate-400 mt-4">Leadership team driving IEEE CIS VVCE initiatives</p>
 
-  <h2 class="text-4xl font-bold text-cyan-300"
-      data-aos="fade-down">
-    Chapter Committee
-  </h2>
-
-  <p class="text-slate-400 mt-4">
-    Leadership team driving IEEE CIS VVCE initiatives
-  </p>
-
-  <div id="committeeGrid"
-       class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-  </div>
-
+  <div id="committeeGrid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12"></div>
 </section>
 
-</div>
-
-<style>
-.memberCard{
-  backdrop-filter: blur(16px);
-  background: rgba(255,255,255,0.08);
-  border:1px solid rgba(255,255,255,0.18);
-  padding:20px;
-  border-radius:20px;
-  text-align:center;
-}
-
-.avatar{
-  width:110px;
-  height:110px;
-  border-radius:999px;
-  object-fit:cover;
-  margin:auto;
-  border:3px solid rgba(56,189,248,.6);
-}
-</style>
+</div><!-- /pageRoot -->
 
 <script src="app.js" defer></script>
-
 <script>
 AOS.init({duration:900, once:true});
-window.addEventListener("load",()=>pageRoot.classList.remove("opacity-0"));
+window.addEventListener("load",()=>document.getElementById("pageRoot").classList.remove("opacity-0"));
 </script>
+
 <!-- COMMITTEE MODAL -->
 <div id="memberModal"
-     class="fixed inset-0 bg-black/70 backdrop-blur-sm
-            hidden items-center justify-center z-50">
-
-  <div class="glassCard max-w-2xl w-full relative">
-
-
-    <!-- close -->
-    <button id="modalClose"
-      class="absolute top-3 right-4 text-xl text-slate-400 hover:text-white">
-      ✕
-    </button>
-
-    <img id="modalImg"
-     class="w-72 h-72 object-cover rounded-xl mx-auto">
-
-
-    <h3 id="modalName"
-        class="text-xl font-semibold text-cyan-300 mt-4 text-center"></h3>
-
-    <p id="modalRole"
-       class="text-center text-slate-400 mt-1"></p>
-
-    <p id="modalBio"
-       class="text-slate-300 mt-4 text-center"></p>
-
-    <a id="modalLinkedin"
-       target="_blank"
-       class="miniBtn mt-5 inline-block text-center hidden">
-       LinkedIn →
-    </a>
-
+     class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center z-50">
+  <div class="glassCard max-w-2xl w-full relative mx-4">
+    <button id="modalClose" class="absolute top-3 right-4 text-xl text-slate-400 hover:text-white">✕</button>
+    <img id="modalImg" class="w-72 h-72 object-cover rounded-xl mx-auto" alt="Member photo">
+    <h3 id="modalName" class="text-xl font-semibold text-cyan-300 mt-4 text-center"></h3>
+    <p id="modalRole" class="text-center text-slate-400 mt-1"></p>
+    <p id="modalBio" class="text-slate-300 mt-4 text-center"></p>
+    <a id="modalLinkedin" target="_blank" class="miniBtn mt-5 inline-block text-center hidden">LinkedIn →</a>
   </div>
+</div>
+
+<!-- SOCIAL FLOAT -->
+<div class="fixed bottom-6 left-6 flex flex-col gap-3 z-50">
+  <a href="https://www.linkedin.com/in/ieee-cis-vvce-b103363b0" target="_blank" class="socialBtn">in</a>
+  <a href="https://www.instagram.com/ieee.cis.vvce" target="_blank" class="socialBtn">ig</a>
 </div>
 
 </body>
