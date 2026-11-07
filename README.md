@@ -1,106 +1,123 @@
-# IEEE CIS VVCE Student Chapter — Enhanced React Platform
+# IEEE CIS VVCE Student Chapter Platform
 
 Official web portal for the **IEEE Computational Intelligence Society (CIS) Student Chapter** at **Vidyavardhaka College of Engineering (VVCE), Mysuru**.
 
-Modernized with **React 18, Vite, TypeScript, Tailwind CSS**, and **Supabase Realtime (WebSockets)**, architected with strict enterprise-grade security hardening against all common web vulnerabilities.
-
-> 💡 **New to React or prefer simple HTML/CSS?**
-> Read our beginner-friendly [**Project Guide & File Structure (PROJECT_STRUCTURE.md)**](PROJECT_STRUCTURE.md) to easily find and edit any page, understand the directory map, and learn how the live auto-updates and anti-hack systems work!
+Built with **React 18, Vite, TypeScript, Tailwind CSS**, and **Supabase Realtime (WebSockets)**, architected with strict enterprise-grade security hardening and an ultra-simple 3-folder structure.
 
 ---
 
-## 🚀 Key Enhancements & Features
+## 📁 Simple 3-Folder Structure
 
-### 1. ⚡ Real-Time Auto-Updates (Zero-Reload WebSockets)
-- **Supabase Realtime Engine**: All content tables (`events`, `updates`, `projects`, `papers`, `resources`, `committee`, `registrations`, `contact_messages`) are bound to Supabase Realtime WebSocket publications.
-- **Instant Client Synchronization**: When organizers add an event, publish an announcement, or modify a registration, all active browser sessions update instantaneously without page reloads.
+All the website source code lives in `src/`, organized into just **3 clean folders**:
+
+```text
+ieee-cis-site/
+│
+├── 📂 src/
+│   │
+│   ├── 📂 pages/                  <-- 1. EVERY WEB PAGE (Directly matches the site!)
+│   │   ├── HomePage.tsx           <-- Home page (Hero, Live Stats, About, Updates feed)
+│   │   ├── EventsPage.tsx         <-- Events catalog & filter (upcoming / closed / completed)
+│   │   ├── EventDetailPage.tsx    <-- Single event view, guidelines & poster
+│   │   ├── RegisterPage.tsx       <-- Event registration (individual/team, fee calc, payment QR)
+│   │   ├── ProjectsPage.tsx       <-- Student AI/ML projects showcase
+│   │   ├── ResearchPage.tsx       <-- Research papers & publications
+│   │   ├── ResourcesPage.tsx      <-- Study materials, cheat sheets & roadmaps
+│   │   ├── GalleryPage.tsx        <-- Photo gallery with image zoom modal
+│   │   ├── CommitteePage.tsx      <-- Executive committee team & modal bio popups
+│   │   ├── ContactPage.tsx        <-- Contact form with anti-bot defense
+│   │   ├── AdminLoginPage.tsx     <-- Admin login screen
+│   │   └── AdminDashboardPage.tsx <-- Full organizer control center & CSV export
+│   │
+│   ├── 📂 components/             <-- 2. REUSABLE HTML BUILDING BLOCKS
+│   │   ├── Navbar.tsx             <-- Header navigation with pulsing live WebSocket beacon
+│   │   ├── Footer.tsx             <-- Bottom footer with contact info & address
+│   │   ├── EventCard.tsx          <-- Event card design
+│   │   ├── StatCard.tsx           <-- Animated live counter card
+│   │   ├── Honeypot.tsx           <-- Invisible security trap that catches bots & hackers
+│   │   ├── RealtimeIndicator.tsx  <-- Live sync health status indicator
+│   │   ├── ParticleBackground.tsx <-- Ambient animated glowing particles
+│   │   ├── SocialFloat.tsx        <-- Floating LinkedIn & Instagram links
+│   │   ├── BrandIcons.tsx         <-- Crisp SVG icons (LinkedIn, Instagram, GitHub)
+│   │   ├── ImageModal.tsx         <-- Lightbox popup for posters and photos
+│   │   ├── MemberModal.tsx        <-- Popup modal for committee member profiles
+│   │   └── Toast.tsx              <-- Popup notifications (success/error alerts)
+│   │
+│   ├── 📂 lib/                    <-- 3. CORE LOGIC & SECURITY TOOLS
+│   │   ├── supabase.ts            <-- Database & Realtime WebSocket connection
+│   │   ├── security.ts            <-- Anti-hack shields (XSS filter, safeUrl, Rate limiter)
+│   │   ├── hooks.ts               <-- Live auto-refresh hooks & admin session manager
+│   │   └── types.ts               <-- TypeScript data shapes for events, papers, etc.
+│   │
+│   ├── App.tsx                    <-- Website router (HashRouter: zero 404s on refresh)
+│   ├── index.css                  <-- Global styling (Tailwind CSS utility classes)
+│   └── main.tsx                   <-- Application bootstrap
+│
+├── 📂 public/                     <-- Clean public static folder (Only 2 files!)
+│   ├── 404.html                   <-- SPA fallback for GitHub Pages / static hosting
+│   └── _headers                   <-- Enterprise security headers (CSP, Anti-Clickjacking)
+│
+├── index.html                     <-- HTML entry point
+├── package.json                   <-- Dependencies (0 vulnerabilities)
+├── README.md                      <-- Project documentation & guide
+├── tailwind.config.js             <-- Tailwind CSS colors, fonts & theme config
+├── tsconfig.json                  <-- TypeScript compiler settings
+└── vite.config.ts                 <-- Vite build setup
+```
+
+---
+
+## 🛠️ "Where Do I Edit...?" Cheat Sheet
+
+| To change... | Open this file: | What you will see: |
+|---|---|---|
+| **Home page title, hero, or intro** | [`src/pages/HomePage.tsx`](src/pages/HomePage.tsx) | `<h1>`, `<p>`, buttons and hero section |
+| **Top Navigation Menu items** | [`src/components/Navbar.tsx`](src/components/Navbar.tsx) | Array of links (`navLinks`) with names and paths |
+| **Footer email or address** | [`src/components/Footer.tsx`](src/components/Footer.tsx) | Address text and `mailto:ieee-cis@vvce.ac.in` |
+| **Colors, fonts, or styling** | [`src/index.css`](src/index.css) | Standard CSS rules and Tailwind glassmorphism styles |
+| **Events page header or text** | [`src/pages/EventsPage.tsx`](src/pages/EventsPage.tsx) | Filter bar and event list layout |
+| **Registration form fields** | [`src/pages/RegisterPage.tsx`](src/pages/RegisterPage.tsx) | Form `<input>` elements for USN, branch, phone, etc. |
+| **Social media links** | [`src/components/SocialFloat.tsx`](src/components/SocialFloat.tsx) | LinkedIn and Instagram URL links |
+
+---
+
+## ⚡ Real-Time Auto-Updates (Zero-Reload)
+
+- **Supabase Realtime Engine**: All 8 content tables (`events`, `updates`, `projects`, `papers`, `resources`, `committee`, `registrations`, `contact_messages`) are bound to Supabase Realtime WebSocket publications.
+- **Instant Synchronization**: When organizers add/edit/delete an event, publish an announcement, or modify a registration, all active browser sessions update instantaneously without page reloads.
 - **Animated Live Counters**: Homepage metric cards smoothly count up to exact database statistics in real-time.
 - **Live Sync Beacon**: Pulsing real-time connection badge confirms active WebSocket health to users.
 
-### 2. 🛡️ Comprehensive Security Hardening & Zero-Vulnerability Architecture
+---
+
+## 🛡️ Anti-Hack & Security Hardening
+
 - **XSS Immunity**: React JSX strictly escapes all data by default. Custom `safeUrl()` protocol validators block `javascript:`, `data:`, and `vbscript:` vectors across all hyperlinks, poster images, and payment QR codes.
 - **Row-Level Security (RLS)**: Active across all 8 PostgreSQL tables. Public anonymous visitors can only read public tables and insert registrations/messages. Private registrant details (USNs, phone numbers, emails, UTRs) are protected and only accessible to authenticated organizers.
 - **Database Function Hardening**: `public.get_registration_count()` function has its `search_path` strictly locked to `public`, mitigating mutable search path hijacking.
 - **Anti-Bot Honeypot Defense**: Forms feature invisible honeypot trap fields (`tabindex="-1"`, hidden off-screen) alongside a minimum human submission speed timer (1.2s minimum) to discard automated scraper spam.
 - **Client-Side Rate Limiting**: Throttles registration and contact form submissions to prevent denial-of-service spam floods.
 - **HTTP Security Headers**: Complete Content-Security-Policy (CSP), `X-Frame-Options: DENY` (anti-clickjacking), `X-Content-Type-Options: nosniff` (anti-MIME-sniffing), and `Referrer-Policy: strict-origin-when-cross-origin`.
-- **Patched Dependency Tree**: All npm dependencies audited with **0 vulnerabilities**.
-
-### 3. 📱 Modern Glassmorphic Dark-Tech UI
-- Tailored for IEEE CIS branding with glowing cyan accents (`#22d3ee`), ambient blurred indigo spheres, and an interactive HTML5 particle canvas.
-- Fully responsive across mobile, tablet, laptop, and ultra-wide displays with accessible mobile drawer navigation.
-- Accessible modal lightboxes for committee leadership profiles and high-resolution event posters.
-
-### 4. 🎛️ Protected Administrator Console (`/#/admin`)
-- Secure authentication via Supabase Auth.
-- **Event Lifecycle Manager**: Toggle events between `Upcoming` (open), `Closed`, and `Completed` in real-time.
-- **Live Announcement Broadcaster**: Publish notices and hackathon updates directly to the homepage feed.
-- **Registrations Manager**: Search, review, and toggle payment status for participants.
-- **One-Click CSV Export**: Instant spreadsheet download for on-ground event desk check-ins.
-- **Security Health Auditor**: Visual verification of active RLS policies and connection health.
+- **0 Vulnerabilities**: All npm dependencies audited with **0 vulnerabilities**.
 
 ---
 
-## 🛠️ Tech Stack
+## 🚀 Running & Deploying
 
-| Layer | Technology |
-|---|---|
-| **Frontend Framework** | React 18 + TypeScript |
-| **Build Tool & Bundler** | Vite 6 (Code-split vendor chunks) |
-| **Styling & Effects** | Tailwind CSS + Canvas Particles + Confetti |
-| **Routing** | React Router v7 (HashRouter for GitHub Pages/Vercel zero-404 compatibility) |
-| **Backend & Database** | Supabase PostgreSQL + Row-Level Security (RLS) |
-| **Realtime Engine** | Supabase WebSockets (`supabase_realtime`) |
-| **Icons** | Lucide React + Custom Brand SVGs |
-
----
-
-## 📦 Getting Started Locally
-
-### Prerequisites
-- Node.js `v18+` or `v20+` (tested on Node v24)
-- npm `v9+` or `v11+`
-
-### Installation
+### Development Mode
 ```bash
-# Clone the repository
-git clone https://github.com/ChiranthanNS/ieee-cis-vvce.git
-cd ieee-cis-vvce
-
-# Install dependencies
-npm install
-
-# Start local development server
 npm run dev
 ```
+Opens `http://localhost:3000` with instant hot-reloading.
 
-Visit `http://localhost:3000` in your browser.
-
-### Build for Production
+### Production Build
 ```bash
 npm run build
 ```
-Compiled production-ready assets will be created in the `dist/` directory.
+Creates the optimized static distribution in `dist/`.
 
----
-
-## 🚀 Deployment
-
-### GitHub Pages
-1. In repository settings, navigate to **Pages**.
-2. Select **GitHub Actions** or set source to deploy from the `dist/` branch/directory.
-3. Because the platform uses `HashRouter` and includes `public/404.html`, deep links and browser refreshes work with zero 404 errors.
-
-### Vercel / Netlify
-- Configuration files `vercel.json` and `public/_headers` are already included with pre-configured CSP and security headers.
-- Build command: `npm run build`
-- Output directory: `dist`
-
----
-
-## 🔒 Security Policy
-
-If you discover a potential vulnerability, please report it privately to `ieee-cis@vvce.ac.in`. All reports are reviewed promptly by the chapter technical committee.
+### Automated GitHub Pages Deployment
+Every push to `main` automatically triggers the included GitHub Actions workflow ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)) to build and publish your website live to GitHub Pages.
 
 ---
 
