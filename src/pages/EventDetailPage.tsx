@@ -4,7 +4,7 @@ import { Calendar, MapPin, Users, IndianRupee, ArrowLeft, ArrowRight, ShieldChec
 import { supabase } from '../lib/supabase';
 import { safeUrl } from '../lib/security';
 import { ImageModal } from '../components/ImageModal';
-import type { EventItem } from '../types/database';
+import type { EventItem } from '../lib/types';
 
 export const EventDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();

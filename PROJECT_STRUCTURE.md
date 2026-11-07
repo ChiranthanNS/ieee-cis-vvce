@@ -1,102 +1,76 @@
-# Project Guide & File Structure
+# Project Guide & Simplified File Structure
 
-> **Welcome!** If you know basic HTML and CSS, this guide is written specifically for you. It explains how this website is organized, where to edit anything you need, and how the automatic live updates and anti-hack security systems protect the site.
-
----
-
-## 🧭 How React Works (in simple HTML terms)
-
-In classic HTML, you write `<p>Hello</p>` inside an `.html` file.
-In modern React, you write the exact same thing inside `.tsx` files, but with two superpowers:
-1. **Components**: You create reusable pieces like a `<Navbar />` or `<Footer />` once, and include them on every page without copying and pasting HTML.
-2. **Auto-Updates**: When new events or announcements are added to the database, React automatically updates the page in real-time **without the user needing to refresh the browser**.
+> **Welcome!** If you know basic HTML and CSS, this guide is written specifically for you. It explains how this website is organized into just **3 simple folders**, where to find and edit any page, and how the automatic live updates and anti-hack systems work.
 
 ---
 
-## 📁 Simple File Directory Map
+## 🧭 The Streamlined 3-Folder Structure
+
+All the website code lives in `src/`, organized into just **3 clean folders**:
 
 ```text
 ieee-cis-site/
 │
-├── 📂 src/                        <-- ALL WEBSITE SOURCE CODE LIVES HERE
+├── 📂 src/
 │   │
-│   ├── 📂 pages/                  <-- EVERY WEB PAGE (Just like individual HTML pages!)
-│   │   ├── HomePage.tsx           <-- Home page (Hero, Live Stats, About, Updates)
-│   │   ├── EventsPage.tsx         <-- Events list & search filter
-│   │   ├── EventDetailPage.tsx    <-- Single event details, poster & guidelines
-│   │   ├── RegisterPage.tsx       <-- Event registration form & payment verification
+│   ├── 📂 pages/                  <-- 1. EVERY WEB PAGE (Directly matches the website!)
+│   │   ├── HomePage.tsx           <-- Home page (Hero, Live Stats, About, Updates feed)
+│   │   ├── EventsPage.tsx         <-- Events catalog & filter (upcoming / closed / completed)
+│   │   ├── EventDetailPage.tsx    <-- Single event view, guidelines & poster
+│   │   ├── RegisterPage.tsx       <-- Event registration (individual/team, fee calc, payment QR)
 │   │   ├── ProjectsPage.tsx       <-- Student AI/ML projects showcase
 │   │   ├── ResearchPage.tsx       <-- Research papers & publications
-│   │   ├── ResourcesPage.tsx      <-- Study materials, roadmaps & resources
+│   │   ├── ResourcesPage.tsx      <-- Study materials, cheat sheets & roadmaps
 │   │   ├── GalleryPage.tsx        <-- Photo gallery with image zoom modal
-│   │   ├── CommitteePage.tsx      <-- Team members & leadership bios
-│   │   ├── ContactPage.tsx        <-- Contact form with anti-bot protection
+│   │   ├── CommitteePage.tsx      <-- Executive committee team & modal bio popups
+│   │   ├── ContactPage.tsx        <-- Contact form with anti-bot defense
 │   │   ├── AdminLoginPage.tsx     <-- Admin login screen
-│   │   └── AdminDashboardPage.tsx <-- Admin console (Manage events & export registrations)
+│   │   └── AdminDashboardPage.tsx <-- Organizer control center & 1-click CSV export
 │   │
-│   ├── 📂 components/             <-- REUSABLE HTML BUILDING BLOCKS
-│   │   ├── Navbar.tsx             <-- Top navigation bar with live status indicator
-│   │   ├── Footer.tsx             <-- Bottom footer with contact info & quick links
-│   │   ├── EventCard.tsx          <-- Event card design used across pages
+│   ├── 📂 components/             <-- 2. REUSABLE HTML BUILDING BLOCKS
+│   │   ├── Navbar.tsx             <-- Header navigation with pulsing live WebSocket beacon
+│   │   ├── Footer.tsx             <-- Bottom footer with contact info & address
+│   │   ├── EventCard.tsx          <-- Event card design
 │   │   ├── StatCard.tsx           <-- Animated live counter card
 │   │   ├── Honeypot.tsx           <-- Invisible security trap that catches bots & hackers
-│   │   ├── RealtimeIndicator.tsx  <-- Pulsing green badge showing live WebSocket sync
+│   │   ├── RealtimeIndicator.tsx  <-- Live sync health status indicator
 │   │   ├── ParticleBackground.tsx <-- Ambient animated glowing particles
-│   │   ├── SocialFloat.tsx        <-- Floating LinkedIn & Instagram buttons
+│   │   ├── SocialFloat.tsx        <-- Floating LinkedIn & Instagram links
 │   │   ├── BrandIcons.tsx         <-- Crisp SVG icons (LinkedIn, Instagram, GitHub)
-│   │   ├── ImageModal.tsx         <-- Fullscreen popup when clicking posters/photos
-│   │   └── MemberModal.tsx        <-- Popup showing committee member details & LinkedIn
+│   │   ├── ImageModal.tsx         <-- Lightbox popup for posters and photos
+│   │   ├── MemberModal.tsx        <-- Popup modal for committee member profiles
+│   │   └── Toast.tsx              <-- Popup notifications (success/error alerts)
 │   │
-│   ├── 📂 lib/                    <-- BACKEND & SECURITY DEFENSES
+│   ├── 📂 lib/                    <-- 3. CORE LOGIC & SECURITY TOOLS
 │   │   ├── supabase.ts            <-- Database & Realtime WebSocket connection
-│   │   └── security.ts            <-- Anti-hack shields (XSS filter, URL validator, Rate limiter)
+│   │   ├── security.ts            <-- Anti-hack shields (XSS filter, safeUrl, Rate limiter)
+│   │   ├── hooks.ts               <-- Live auto-refresh hooks & admin session manager
+│   │   └── types.ts               <-- TypeScript data shapes for events, papers, etc.
 │   │
-│   ├── 📂 hooks/                  <-- AUTOMATIC DATA SYNC
-│   │   ├── useRealtimeCollection.ts <-- Listens for live database changes & auto-refreshes
-│   │   ├── useRealtimeStats.ts    <-- Auto-counts live events, members, and projects
-│   │   └── useAuth.ts             <-- Manages secure admin login sessions
-│   │
-│   ├── 📂 context/
-│   │   └── ToastContext.tsx       <-- Beautiful popup notifications (success/error alerts)
-│   │
-│   ├── 📂 types/
-│   │   └── database.ts            <-- Data shapes for events, registrations, papers, etc.
-│   │
-│   ├── App.tsx                    <-- Main router: connects URLs (#/events) to pages
-│   ├── index.css                  <-- Global styling (Tailwind CSS classes & glassmorphism)
-│   └── main.tsx                   <-- Starts the React application
+│   ├── App.tsx                    <-- Website router (HashRouter: zero 404s on refresh)
+│   ├── index.css                  <-- Global styling (Tailwind CSS utility classes)
+│   └── main.tsx                   <-- Application bootstrap
 │
-├── 📂 public/                     <-- PUBLIC ASSETS & REDIRECTS
-│   ├── 404.html                   <-- Fallback page for static hosts
-│   ├── _headers                   <-- Enterprise security headers (CSP, Anti-Clickjacking)
-│   └── *.html                     <-- Backward-compatible redirect links for old bookmarks
+├── 📂 public/                     <-- Clean public static folder (Only 2 files!)
+│   ├── 404.html                   <-- SPA fallback for GitHub Pages / static hosting
+│   └── _headers                   <-- Enterprise security headers (CSP, Anti-Clickjacking)
 │
-├── 📂 dist/                       <-- READY-TO-DEPLOY PRODUCTION BUILD
-│   │                              (Generated by `npm run build` — upload to any host!)
-│   ├── index.html                 <-- Pre-bundled, optimized static HTML
-│   └── assets/                    <-- Minified CSS and JavaScript
-│
-├── 📂 legacy-static/              <-- ARCHIVE OF PREVIOUS VANILLA CODE
-│   ├── app.js                     <-- Original single-file JS before the React upgrade
-│   └── README.md                  <-- Explanatory note
-│
-├── index.html                     <-- HTML entry point for modern browsers
-├── package.json                   <-- Project scripts & zero-vulnerability dependencies
-├── tailwind.config.js             <-- Tailwind CSS colors, fonts & theme config
-├── tsconfig.json                  <-- TypeScript compiler settings
-└── vite.config.ts                 <-- Fast Vite build configuration
+├── index.html                     <-- HTML entry point
+├── package.json                   <-- Dependencies (0 vulnerabilities)
+├── README.md                      <-- Project documentation
+└── PROJECT_STRUCTURE.md           <-- This beginner-friendly guide
 ```
 
 ---
 
 ## 🛠️ "Where Do I Edit...?" Cheat Sheet
 
-| I want to change... | Open this file: | What you will see: |
+| To change... | Open this file | What is inside: |
 |---|---|---|
-| **Home page title or intro** | [`src/pages/HomePage.tsx`](file:///c:/Users/chira/OneDrive/Desktop/Destop%20Files/ieee-cis-site/src/pages/HomePage.tsx) | `<h1>`, `<p>`, buttons and hero section |
+| **Home page title, hero, or intro** | [`src/pages/HomePage.tsx`](file:///c:/Users/chira/OneDrive/Desktop/Destop%20Files/ieee-cis-site/src/pages/HomePage.tsx) | `<h1>`, `<p>`, buttons and hero section |
 | **Top Navigation Menu items** | [`src/components/Navbar.tsx`](file:///c:/Users/chira/OneDrive/Desktop/Destop%20Files/ieee-cis-site/src/components/Navbar.tsx) | Array of links (`navLinks`) with names and paths |
 | **Footer email or address** | [`src/components/Footer.tsx`](file:///c:/Users/chira/OneDrive/Desktop/Destop%20Files/ieee-cis-site/src/components/Footer.tsx) | Address text and `mailto:ieee-cis@vvce.ac.in` |
-| **Colors, fonts, or backgrounds** | [`src/index.css`](file:///c:/Users/chira/OneDrive/Desktop/Destop%20Files/ieee-cis-site/src/index.css) | Standard CSS rules and Tailwind glassmorphism styles |
+| **Colors, fonts, or styling** | [`src/index.css`](file:///c:/Users/chira/OneDrive/Desktop/Destop%20Files/ieee-cis-site/src/index.css) | Standard CSS rules and Tailwind glassmorphism styles |
 | **Events page header or text** | [`src/pages/EventsPage.tsx`](file:///c:/Users/chira/OneDrive/Desktop/Destop%20Files/ieee-cis-site/src/pages/EventsPage.tsx) | Filter bar and event list layout |
 | **Registration form fields** | [`src/pages/RegisterPage.tsx`](file:///c:/Users/chira/OneDrive/Desktop/Destop%20Files/ieee-cis-site/src/pages/RegisterPage.tsx) | Form `<input>` elements for USN, branch, phone, etc. |
 | **Social media links** | [`src/components/SocialFloat.tsx`](file:///c:/Users/chira/OneDrive/Desktop/Destop%20Files/ieee-cis-site/src/components/SocialFloat.tsx) | LinkedIn and Instagram URL links |
@@ -105,9 +79,9 @@ ieee-cis-site/
 
 ## ⚡ How Automatic Real-Time Updates Work
 
-1. When someone opens the website, `src/hooks/useRealtimeCollection.ts` opens a live secure WebSocket connection to your Supabase PostgreSQL database.
-2. When an organizer adds a new event, closes registration, publishes an update, or confirms a payment in the Admin Dashboard, Supabase **broadcasts the change instantly**.
-3. The React hook hears the broadcast and updates the screen within milliseconds. **Nobody has to press reload or refresh!**
+1. When a visitor opens the website, `src/lib/hooks.ts` establishes a secure WebSocket connection to your Supabase PostgreSQL database.
+2. When organizers create an event, close registration, publish an announcement, or confirm a payment in the Admin Dashboard, Supabase **broadcasts the change instantly**.
+3. React catches the broadcast and updates the screen within milliseconds. **Nobody has to reload or refresh!**
 4. The green pulsing badge in the top navbar confirms that live real-time synchronization is active.
 
 ---
@@ -121,7 +95,7 @@ Your website is fortified against all common web attacks:
    - Public visitors only have permission to view public events, announcements, and submit registrations.
 2. **XSS (Cross-Site Scripting) Immunity**:
    - React automatically escapes any dynamic text before rendering it.
-   - All links and poster images run through `safeUrl()` in `src/lib/security.ts`, blocking `javascript:`, `data:`, `vbscript:`, and protocol-relative `//` exploit payloads.
+   - All links and poster images run through `safeUrl()` in [`src/lib/security.ts`](file:///c:/Users/chira/OneDrive/Desktop/Destop%20Files/ieee-cis-site/src/lib/security.ts), blocking `javascript:`, `data:`, `vbscript:`, and protocol-relative `//` exploit payloads.
 3. **Anti-Bot Honeypot Traps**:
    - The registration and contact forms contain invisible trap fields (`<Honeypot />`) that humans cannot see or click.
    - Automated hacking bots blindly fill every form field. When the honeypot field is filled, the submission is silently discarded.
@@ -150,5 +124,4 @@ Open `http://localhost:5173` in your browser. Any change you save in `src/` appe
 ```bash
 npm run build
 ```
-This creates the ready-to-deploy static website in the `dist/` folder. You can upload the contents of `dist/` to **Vercel**, **GitHub Pages**, **Netlify**, or any college web server.
-
+This creates the ready-to-deploy static website in the `dist/` folder.

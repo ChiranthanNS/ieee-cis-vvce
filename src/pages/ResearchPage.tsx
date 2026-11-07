@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { Search, FileText, ExternalLink, Sparkles, User, BookOpen } from 'lucide-react';
-import { useRealtimeCollection } from '../hooks/useRealtimeCollection';
+import { useRealtimeCollection } from '../lib/hooks';
 import { safeUrl } from '../lib/security';
-import type { PaperItem } from '../types/database';
+import type { PaperItem } from '../lib/types';
 
 export const ResearchPage: React.FC = () => {
   const [search, setSearch] = useState('');

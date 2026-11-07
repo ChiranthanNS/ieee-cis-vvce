@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Users, Sparkles } from 'lucide-react';
 import { LinkedInIcon } from '../components/BrandIcons';
-import { useRealtimeCollection } from '../hooks/useRealtimeCollection';
+import { useRealtimeCollection } from '../lib/hooks';
 import { safeUrl } from '../lib/security';
 import { MemberModal } from '../components/MemberModal';
-import type { CommitteeMember } from '../types/database';
+import type { CommitteeMember } from '../lib/types';
 
 export const CommitteePage: React.FC = () => {
   const [selectedMember, setSelectedMember] = useState<CommitteeMember | null>(null);

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { X } from 'lucide-react';
 import { LinkedInIcon } from './BrandIcons';
-import type { CommitteeMember } from '../types/database';
+import type { CommitteeMember } from '../lib/types';
 import { safeUrl } from '../lib/security';
 
 interface MemberModalProps {

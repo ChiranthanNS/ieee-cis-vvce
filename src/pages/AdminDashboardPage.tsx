@@ -17,12 +17,12 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
-import { useAuth } from '../hooks/useAuth';
-import { useToast } from '../context/ToastContext';
-import { useRealtimeCollection } from '../hooks/useRealtimeCollection';
-import { useRealtimeStats } from '../hooks/useRealtimeStats';
+import { useAuth } from '../lib/hooks';
+import { useToast } from '../components/Toast';
+import { useRealtimeCollection } from '../lib/hooks';
+import { useRealtimeStats } from '../lib/hooks';
 import { safeUrl } from '../lib/security';
-import type { EventItem, UpdateItem, RegistrationItem, ContactMessageItem } from '../types/database';
+import type { EventItem, UpdateItem, RegistrationItem, ContactMessageItem } from '../lib/types';
 
 export const AdminDashboardPage: React.FC = () => {
   const navigate = useNavigate();

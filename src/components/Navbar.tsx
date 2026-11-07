@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { Menu, X, Shield, Sparkles } from 'lucide-react';
 import { RealtimeIndicator } from './RealtimeIndicator';
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '../lib/hooks';
 
 const navItems = [
   { name: 'Home', path: '/' },

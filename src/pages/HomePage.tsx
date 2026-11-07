@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, Users, BookOpen, Code2, ArrowRight, BellRing, Sparkles, Award, Cpu, Globe } from 'lucide-react';
-import { useRealtimeStats } from '../hooks/useRealtimeStats';
-import { useRealtimeCollection } from '../hooks/useRealtimeCollection';
+import { useRealtimeStats } from '../lib/hooks';
+import { useRealtimeCollection } from '../lib/hooks';
 import { StatCard } from '../components/StatCard';
 import { EventCard } from '../components/EventCard';
 import { ImageModal } from '../components/ImageModal';
-import type { EventItem, UpdateItem } from '../types/database';
+import type { EventItem, UpdateItem } from '../lib/types';
 
 export const HomePage: React.FC = () => {
   const { stats } = useRealtimeStats();

@@ -3,8 +3,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Shield, Lock, Mail, ArrowRight, ArrowLeft, Eye, EyeOff } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { validateEmail, checkClientRateLimit } from '../lib/security';
-import { useToast } from '../context/ToastContext';
-import { useAuth } from '../hooks/useAuth';
+import { useToast } from '../components/Toast';
+import { useAuth } from '../lib/hooks';
 
 export const AdminLoginPage: React.FC = () => {
   const navigate = useNavigate();

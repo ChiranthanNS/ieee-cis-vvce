@@ -92,3 +92,4 @@ export interface ContactMessageItem {
   message: string;
   created_at?: string;
 }
+

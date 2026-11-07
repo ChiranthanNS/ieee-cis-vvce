@@ -1,9 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import { Search, Calendar, Filter, Sparkles } from 'lucide-react';
-import { useRealtimeCollection } from '../hooks/useRealtimeCollection';
+import { useRealtimeCollection } from '../lib/hooks';
 import { EventCard } from '../components/EventCard';
 import { ImageModal } from '../components/ImageModal';
-import type { EventItem } from '../types/database';
+import type { EventItem } from '../lib/types';
 
 export const EventsPage: React.FC = () => {
   const [search, setSearch] = useState('');

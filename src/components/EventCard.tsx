@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, MapPin, Users, IndianRupee, Image as ImageIcon } from 'lucide-react';
-import type { EventItem } from '../types/database';
+import type { EventItem } from '../lib/types';
 import { safeUrl } from '../lib/security';
 
 interface EventCardProps {

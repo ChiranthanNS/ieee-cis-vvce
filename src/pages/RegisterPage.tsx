@@ -13,10 +13,10 @@ import {
   checkClientRateLimit,
   safeUrl,
 } from '../lib/security';
-import { useToast } from '../context/ToastContext';
+import { useToast } from '../components/Toast';
 import { Honeypot } from '../components/Honeypot';
 import { ImageModal } from '../components/ImageModal';
-import type { EventItem } from '../types/database';
+import type { EventItem } from '../lib/types';
 
 export const RegisterPage: React.FC = () => {
   const [searchParams] = useSearchParams();

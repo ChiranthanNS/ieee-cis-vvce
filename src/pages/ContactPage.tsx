@@ -7,7 +7,7 @@ import {
   isHumanSubmissionSpeed,
   checkClientRateLimit,
 } from '../lib/security';
-import { useToast } from '../context/ToastContext';
+import { useToast } from '../components/Toast';
 import { Honeypot } from '../components/Honeypot';
 
 export const ContactPage: React.FC = () => {

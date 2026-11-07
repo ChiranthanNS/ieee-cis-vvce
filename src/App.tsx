@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { ToastProvider } from './context/ToastContext';
+import { ToastProvider } from './components/Toast';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { ParticleBackground } from './components/ParticleBackground';
@@ -41,16 +41,27 @@ export const App: React.FC = () => {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/events" element={<EventsPage />} />
+              <Route path="/events.html" element={<EventsPage />} />
               <Route path="/events/:id" element={<EventDetailPage />} />
+              <Route path="/event.html" element={<EventsPage />} />
               <Route path="/register" element={<RegisterPage />} />
+              <Route path="/register.html" element={<RegisterPage />} />
               <Route path="/projects" element={<ProjectsPage />} />
+              <Route path="/projects.html" element={<ProjectsPage />} />
               <Route path="/research" element={<ResearchPage />} />
+              <Route path="/research.html" element={<ResearchPage />} />
               <Route path="/resources" element={<ResourcesPage />} />
+              <Route path="/resources.html" element={<ResourcesPage />} />
               <Route path="/gallery" element={<GalleryPage />} />
+              <Route path="/gallery.html" element={<GalleryPage />} />
               <Route path="/committee" element={<CommitteePage />} />
+              <Route path="/committee.html" element={<CommitteePage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/contact.html" element={<ContactPage />} />
               <Route path="/admin-login" element={<AdminLoginPage />} />
+              <Route path="/admin-login.html" element={<AdminLoginPage />} />
               <Route path="/admin" element={<AdminDashboardPage />} />
+              <Route path="/admin.html" element={<AdminDashboardPage />} />
               {/* Fallback */}
               <Route path="*" element={<HomePage />} />
             </Routes>

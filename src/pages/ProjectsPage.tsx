@@ -1,9 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import { Search, Code2, ExternalLink, Sparkles, FolderGit2 } from 'lucide-react';
 import { GitHubIcon } from '../components/BrandIcons';
-import { useRealtimeCollection } from '../hooks/useRealtimeCollection';
+import { useRealtimeCollection } from '../lib/hooks';
 import { safeUrl } from '../lib/security';
-import type { ProjectItem } from '../types/database';
+import type { ProjectItem } from '../lib/types';
 
 export const ProjectsPage: React.FC = () => {
   const [search, setSearch] = useState('');
